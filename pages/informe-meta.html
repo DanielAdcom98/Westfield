@@ -7,14 +7,14 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <link rel="stylesheet" href="../assets/css/shared.css">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap');
+
 :root{
-  --bg:#F5F5F5;--card:#FFFFFF;--card2:#F9F9F9;--border:#E0E0E0;
-  --black:#1A1A1A;--yellow:#FFC000;--green:#4CAF50;--red:#EF5350;
+  --bg:#F5F5F5;--card:var(--blanco);--card2:#F9F9F9;--border:#E0E0E0;
+  --black:#1A1A1A;--yellow:#D98E04;--green:#4CAF50;--red:#EF5350;
   --t1:#1A1A1A;--t2:#333333;--t3:#999999;--t4:#666666;--gray-bar:#888888;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--t1);font-family:'Poppins',sans-serif;font-size:14px;line-height:1.5}
+body{background:var(--bg);color:var(--t1);font-family:var(--font-body);font-size:14px;line-height:1.5}
 
 /* ─── HEADER ─── */
 .header{
@@ -28,7 +28,7 @@ body{background:var(--bg);color:var(--t1);font-family:'Poppins',sans-serif;font-
   border-radius:50%;display:flex;align-items:center;justify-content:center;
   font-size:20px;font-weight:700;color:var(--black);flex-shrink:0;
 }
-.header h1{font-size:20px;font-weight:700;color:#fff;letter-spacing:-.01em}
+.header h1{font-size:20px;font-weight:700;color:var(--blanco);letter-spacing:-.01em}
 .header-sub{color:var(--t3);font-size:11px;margin-top:2px;font-weight:300}
 .period-badge{
   display:inline-block;
@@ -80,10 +80,10 @@ body{background:var(--bg);color:var(--t1);font-family:'Poppins',sans-serif;font-
 .table-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--border);background:var(--card);box-shadow:0 1px 4px rgba(0,0,0,.06)}
 table{width:100%;border-collapse:collapse}
 thead tr{background:var(--black)}
-th{padding:11px 14px;text-align:left;font-size:9.5px;text-transform:uppercase;letter-spacing:.08em;color:#fff;white-space:nowrap;font-weight:600}
+th{padding:11px 14px;text-align:left;font-size:9.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--blanco);white-space:nowrap;font-weight:600}
 th.num{text-align:right}
 td{padding:10px 14px;border-top:1px solid var(--border);font-size:12px;vertical-align:middle;color:var(--t2)}
-td.num{text-align:right;font-variant-numeric:tabular-nums;font-family:'Poppins',sans-serif}
+td.num{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--font-body)}
 td.camp-name{max-width:280px;font-size:11px;word-break:break-word}
 tr:hover td{background:#FFF8E1}
 .row-top td{background:rgba(76,175,80,.06)}
@@ -118,9 +118,9 @@ tr:hover td{background:#FFF8E1}
 
 /* ─── FILTERS ─── */
 .filter-bar{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;align-items:center}
-.filter-btn{background:var(--card);border:1px solid var(--border);color:var(--t4);padding:5px 14px;border-radius:20px;cursor:pointer;font-size:11px;transition:all .15s;font-family:'Poppins',sans-serif;font-weight:500}
-.filter-btn.active,.filter-btn:hover{background:var(--black);color:#fff;border-color:var(--black)}
-input[type=text]{background:var(--card);border:1px solid var(--border);color:var(--t1);padding:5px 14px;border-radius:20px;font-size:11px;outline:none;width:220px;font-family:'Poppins',sans-serif}
+.filter-btn{background:var(--card);border:1px solid var(--border);color:var(--t4);padding:5px 14px;border-radius:20px;cursor:pointer;font-size:11px;transition:all .15s;font-family:var(--font-body);font-weight:500}
+.filter-btn.active,.filter-btn:hover{background:var(--black);color:var(--blanco);border-color:var(--black)}
+input[type=text]{background:var(--card);border:1px solid var(--border);color:var(--t1);padding:5px 14px;border-radius:20px;font-size:11px;outline:none;width:220px;font-family:var(--font-body)}
 input[type=text]:focus{border-color:var(--yellow)}
 
 /* ─── CONCLUSIONS ─── */
@@ -209,7 +209,7 @@ input[type=text]:focus{border-color:var(--yellow)}
 
 @media(max-width:900px){.charts-row,.charts-row-3,.rank-row,.strategic-grid{grid-template-columns:1fr}.insight-bar{grid-template-columns:1fr 1fr}.angle-insight{grid-template-columns:1fr}.header{padding:20px 16px}.container{padding:20px 16px}}
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font-family:'DM Sans',system-ui,sans-serif;font-size:14px;line-height:1.5}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:14px;line-height:1.5}
 
 /* ─── HEADER ─── */
 .header{
@@ -221,20 +221,43 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',system-ui,sans
 .pdf-download{
   position:fixed;right:24px;bottom:24px;z-index:300;
   border:0;border-radius:999px;background:var(--black);color:var(--yellow);
-  padding:11px 18px;font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;
+  padding:11px 18px;font-family:var(--font-body);font-size:11px;font-weight:700;
   box-shadow:0 8px 24px rgba(0,0,0,.22);cursor:pointer;
 }
 .pdf-download:hover{opacity:.9}
 @media print{
   .hub-back,.pdf-download,.filter-bar{display:none!important}
-  body{background:#fff}
+  body{background:var(--blanco)}
   .container{max-width:none;padding:18px}
   .section,.strategic-section,.chart-box,.kpi,.conclusion-card,.ad-card{break-inside:avoid}
   .chart-box,.kpi,.conclusion-card,.ad-card,.table-wrap{box-shadow:none}
 }
-</style>
+
+/* Template PPT 2026 alignment */
+body{font-family:var(--font-body)!important;color:var(--negro);background-color:var(--blanco)!important;background-image:var(--westfield-pattern)!important;background-size:92px 104px!important}
+h1,h2,.hero h1,.slide-cover h1,.cover h1{font-family:var(--font-title)!important;letter-spacing:0!important;text-transform:none!important;color:var(--negro)}
+.slide,.cover,.slide-cover,.index-modal{background-color:var(--blanco)!important;background-image:var(--westfield-pattern)!important;background-size:92px 104px!important}
+.slide-section,.claim,.claim-box,.hero,.funnel-step,.mix-tab.active,.tab.active,thead tr,tfoot tr,.metric:first-child,.kpi.accent{background:var(--negro)!important;color:var(--blanco)!important}
+.slide-header,.top .header{background:transparent!important;padding:0!important;border-radius:0!important;box-shadow:none!important;white-space:normal!important}
+.slide-header h2,.top .header h2,.section-title h2{font-family:var(--font-title)!important;color:var(--amarillo)!important;font-size:clamp(2.1rem,4vw,4rem)!important;line-height:.95!important;text-transform:none!important;letter-spacing:0!important}
+.card,.stat-card,.panel,.metric,.kpi,.chart-box,.conclusion-card,.strategic-card,.insight-card,.timeline-item,.tl,.action,.mini-kpi,.table-wrap,.mix-panel-container,.panels,.note,.note-box,.quote,.quote-box{border-color:var(--gris-borde)!important;border-radius:var(--radius)!important;box-shadow:var(--shadow-card)!important}
+.card,.stat-card,.panel,.metric,.kpi,.chart-box,.conclusion-card,.strategic-card,.insight-card,.timeline-item,.tl,.action,.mini-kpi,.table-wrap,.mix-panel-container,.panels{background:rgba(255,255,255,.94)!important}
+.num,.badge,.panel-header-badge,.period-badge,.filter.active,.index-btn,.index-toggle-btn{background:var(--negro)!important;color:var(--amarillo)!important;border-color:var(--negro)!important}
+.val,.stat-val,.metric-value,.kpi-val{color:var(--negro)!important;font-family:var(--font-body)!important}
+.metric:first-child .metric-value,.kpi.accent .kpi-val,.claim strong,.claim-box strong,tfoot tr,.mix-tab.active .pct{color:var(--amarillo)!important}
+th{background:var(--negro)!important;color:var(--blanco)!important;font-family:var(--font-body)!important}
+.progress,.progress-bar,.bar-fill.yellow,.bar span,.metric::after,.kpi::after,.card::after{background:var(--amarillo)!important}
+.nav-btn,.nav button,.tools button,.filter,.tab,.mix-tab{font-family:var(--font-body)!important;border-radius:999px!important}
+.nav-btn:hover,.nav button:hover,.tools button:hover,.filter:hover,.tab:hover,.mix-tab:hover{background:var(--negro)!important;color:var(--amarillo)!important;border-color:var(--negro)!important}
+.light-text,.desc,.body-text,.small,.metric-note,.kpi-sub,.card p,.panel-box p,td{color:var(--gris-oscuro)!important}
+.hero h1{color:var(--blanco)!important}
+.section-title .bar{background:transparent!important;padding:0!important;border-radius:0!important}
+.index-btn,.index-toggle-btn{right:112px!important}
+@media(max-width:768px){.slide-header h2,.top .header h2{font-size:2rem!important}}
+  </style>
 </head>
 <body>
+<img class="wbs-brand-logo" src="../assets/img/logo-wbs-azul.png" alt="Westfield Business School">
 <a class="hub-back" href="../index.html">← Hub</a>
 <button class="pdf-download" type="button" onclick="window.print()">Descargar PDF</button>
 <div class="header">
@@ -508,7 +531,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',system-ui,sans
       </div>
       <div class="abar-row">
         <span class="abar-name">3 · Aspiracionalidad</span>
-        <div class="abar-track"><div class="abar-fill" style="width:28%;background:#FFC000"></div></div>
+        <div class="abar-track"><div class="abar-fill" style="width:28%;background:#D98E04"></div></div>
         <span class="abar-val" style="color:var(--yellow)">0.54%</span>
       </div>
       <div class="abar-row">
@@ -5513,7 +5536,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',system-ui,sans
 </div>
 
 <script>
-const TICKS={color:'#999999',font:{size:9,family:'Poppins, sans-serif'}};
+const TICKS={color:'#999999',font:{size:9,family:'Sora, Arial, sans-serif'}};
 const GRID={color:'#E0E0E0'};
 
 new Chart(document.getElementById('chartSpend'),{
@@ -5571,3 +5594,7 @@ function searchAds(q){
 </script>
 </body>
 </html>
+
+
+
+

@@ -1,38 +1,116 @@
-/* ─── Design tokens ───────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&family=Sora:wght@300;400;500;600;700;800&display=swap');
+
 :root {
-  --amarillo:  #FFC000;
-  --negro:     #000;
-  --gris-oscuro: #4F4F4F;
-  --gris-medio:  #9E9E9E;
-  --gris-claro:  #F9F9F9;
-  --gris-borde:  #EAEAEA;
-  --blanco:    #FFF;
-  --radius:    8px;
+  --amarillo: #D98E04;
+  --naranja: #D98E04;
+  --azul: #023373;
+  --azul-profundo: #010D26;
+  --negro: #011640;
+  --gris-oscuro: #26355D;
+  --gris-medio: #8A91A3;
+  --gris-claro: #F7F8FB;
+  --gris-borde: #E6E8EE;
+  --gris-frio: #C7CCD9;
+  --terracota: #CD6552;
+  --arena: #DEAA70;
+  --blanco: #FFF;
+  --radius: 10px;
+  --font-title: 'Libre Caslon Text', Georgia, serif;
+  --font-body: 'Sora', Arial, sans-serif;
+  --shadow-soft: 0 14px 34px rgba(1, 22, 64, .08);
+  --shadow-card: 0 8px 22px rgba(1, 22, 64, .06);
+  --westfield-pattern: url("data:image/svg+xml,%3Csvg width='92' height='104' viewBox='0 0 92 104' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M46 6 78 18v25c0 22-13 40-32 53C27 83 14 65 14 43V18L46 6Z' fill='none' stroke='%23E6E8EE' stroke-width='2' opacity='.34'/%3E%3C/svg%3E");
 }
 
-/* ─── Reset ──────────────────────────────────────────────────────────────── */
 *, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ─── Hub back-link (fixed badge on every page) ──────────────────────────── */
+html {
+  color-scheme: light;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--negro);
+}
+
+h1, h2, .display-title {
+  font-family: var(--font-title);
+  letter-spacing: 0;
+}
+
+body,
+.slide,
+.index-modal {
+  background-color: var(--blanco);
+  background-image: var(--westfield-pattern);
+  background-size: 92px 104px;
+}
+
+.wbs-brand-logo {
+  position: fixed;
+  top: 16px;
+  left: 22px;
+  z-index: 9990;
+  width: clamp(132px, 14vw, 220px);
+  height: auto;
+  display: block;
+  padding: 8px 14px;
+  border: 1px solid rgba(230, 232, 238, .92);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, .94);
+  box-shadow: 0 10px 24px rgba(1, 22, 64, .08);
+}
+
+body:has(.tools) .wbs-brand-logo {
+  top: 82px;
+  width: clamp(118px, 12vw, 178px);
+}
+
+body:has(header) .wbs-brand-logo {
+  top: 22px;
+  left: 24px;
+  width: clamp(150px, 14vw, 210px);
+}
+
+body:has(header) header {
+  padding-left: clamp(260px, 21vw, 320px) !important;
+}
+
+body:has(header) .header-logo {
+  display: none !important;
+}
+
+.slide-cover .wbs-brand-logo,
+.cover .wbs-brand-logo {
+  opacity: .96;
+}
+
 .hub-back {
   position: fixed;
   top: 16px;
   right: 16px;
   z-index: 9999;
   background: var(--negro);
-  color: var(--amarillo);
-  font-family: 'Poppins', sans-serif;
+  color: var(--blanco);
+  font-family: var(--font-body);
   font-size: .72rem;
   font-weight: 700;
-  padding: 7px 14px;
+  padding: 8px 14px;
+  border: 1px solid rgba(255,255,255,.2);
   border-radius: 999px;
   text-decoration: none;
-  letter-spacing: .5px;
-  transition: opacity .15s;
+  letter-spacing: .04em;
+  transition: transform .15s, background .15s, color .15s;
   white-space: nowrap;
+  box-shadow: 0 8px 22px rgba(1, 22, 64, .18);
 }
-.hub-back:hover { opacity: .75; }
+
+.hub-back:hover {
+  background: var(--amarillo);
+  color: var(--negro);
+  transform: translateY(-1px);
+}

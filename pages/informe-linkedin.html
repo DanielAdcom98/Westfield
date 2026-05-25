@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Westfield · Informe LinkedIn Leads B2C</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/shared.css">
   <style>
     body {
-      font-family: 'Poppins', sans-serif;
+      font-family: var(--font-body);
       color: var(--negro);
       background: var(--gris-claro);
       line-height: 1.5;
@@ -84,7 +84,7 @@
     }
     .metric .value { font-size: 2rem; font-weight: 700; margin-bottom: 4px; color: var(--negro); line-height: 1.15; }
     .metric .label { color: var(--gris-medio); font-size: .75rem; font-weight: 300; }
-    .note      { background: #fff7ed; border-color: #fed7aa; }
+    .note      { background: #FFF7ED; border-color: #fed7aa; }
     .ok        { background: #eef8f0; border-color: #bfe5c4; }
     .highlight { background: #eef7ff; border-color: #bfdbfe; }
 
@@ -148,7 +148,7 @@
     tr:last-child td { border-bottom: 0; }
     tbody tr:nth-child(even) td { background: var(--gris-claro); }
     tbody tr { transition: background .12s; }
-    tbody tr:hover td { background: #fffde7; }
+    tbody tr:hover td { background: #FFFDE7; }
 
     /* ── Quality inline bar ── */
     .q-bar-wrap { display: flex; align-items: center; gap: 8px; }
@@ -186,7 +186,7 @@
       font-weight: 700;
       cursor: pointer;
       vertical-align: middle;
-      font-family: 'Poppins', sans-serif;
+      font-family: var(--font-body);
       transition: opacity .15s;
     }
     .cargo-toggle:hover { opacity: .8; }
@@ -206,7 +206,7 @@
       background: var(--negro);
       color: var(--amarillo);
       padding: 11px 18px;
-      font-family: 'Poppins', sans-serif;
+      font-family: var(--font-body);
       font-size: .76rem;
       font-weight: 700;
       box-shadow: 0 8px 24px rgba(0,0,0,.22);
@@ -230,9 +230,32 @@
       section { break-inside: avoid; }
       .card, table { box-shadow: none; }
     }
+  
+/* Template PPT 2026 alignment */
+body{font-family:var(--font-body)!important;color:var(--negro);background-color:var(--blanco)!important;background-image:var(--westfield-pattern)!important;background-size:92px 104px!important}
+h1,h2,.hero h1,.slide-cover h1,.cover h1{font-family:var(--font-title)!important;letter-spacing:0!important;text-transform:none!important;color:var(--negro)}
+.slide,.cover,.slide-cover,.index-modal{background-color:var(--blanco)!important;background-image:var(--westfield-pattern)!important;background-size:92px 104px!important}
+.slide-section,.claim,.claim-box,.hero,.funnel-step,.mix-tab.active,.tab.active,thead tr,tfoot tr,.metric:first-child,.kpi.accent{background:var(--negro)!important;color:var(--blanco)!important}
+.slide-header,.top .header{background:transparent!important;padding:0!important;border-radius:0!important;box-shadow:none!important;white-space:normal!important}
+.slide-header h2,.top .header h2,.section-title h2{font-family:var(--font-title)!important;color:var(--amarillo)!important;font-size:clamp(2.1rem,4vw,4rem)!important;line-height:.95!important;text-transform:none!important;letter-spacing:0!important}
+.card,.stat-card,.panel,.metric,.kpi,.chart-box,.conclusion-card,.strategic-card,.insight-card,.timeline-item,.tl,.action,.mini-kpi,.table-wrap,.mix-panel-container,.panels,.note,.note-box,.quote,.quote-box{border-color:var(--gris-borde)!important;border-radius:var(--radius)!important;box-shadow:var(--shadow-card)!important}
+.card,.stat-card,.panel,.metric,.kpi,.chart-box,.conclusion-card,.strategic-card,.insight-card,.timeline-item,.tl,.action,.mini-kpi,.table-wrap,.mix-panel-container,.panels{background:rgba(255,255,255,.94)!important}
+.num,.badge,.panel-header-badge,.period-badge,.filter.active,.index-btn,.index-toggle-btn{background:var(--negro)!important;color:var(--amarillo)!important;border-color:var(--negro)!important}
+.val,.stat-val,.metric-value,.kpi-val{color:var(--negro)!important;font-family:var(--font-body)!important}
+.metric:first-child .metric-value,.kpi.accent .kpi-val,.claim strong,.claim-box strong,tfoot tr,.mix-tab.active .pct{color:var(--amarillo)!important}
+th{background:var(--negro)!important;color:var(--blanco)!important;font-family:var(--font-body)!important}
+.progress,.progress-bar,.bar-fill.yellow,.bar span,.metric::after,.kpi::after,.card::after{background:var(--amarillo)!important}
+.nav-btn,.nav button,.tools button,.filter,.tab,.mix-tab{font-family:var(--font-body)!important;border-radius:999px!important}
+.nav-btn:hover,.nav button:hover,.tools button:hover,.filter:hover,.tab:hover,.mix-tab:hover{background:var(--negro)!important;color:var(--amarillo)!important;border-color:var(--negro)!important}
+.light-text,.desc,.body-text,.small,.metric-note,.kpi-sub,.card p,.panel-box p,td{color:var(--gris-oscuro)!important}
+.hero h1{color:var(--blanco)!important}
+.section-title .bar{background:transparent!important;padding:0!important;border-radius:0!important}
+.index-btn,.index-toggle-btn{right:112px!important}
+@media(max-width:768px){.slide-header h2,.top .header h2{font-size:2rem!important}}
   </style>
 </head>
 <body>
+<img class="wbs-brand-logo" src="../assets/img/logo-wbs-azul.png" alt="Westfield Business School">
 <a class="hub-back" href="../index.html">← Hub</a>
 <button class="pdf-download" type="button" onclick="window.print()">Descargar PDF</button>
 
@@ -623,3 +646,7 @@
 </script>
 </body>
 </html>
+
+
+
+
