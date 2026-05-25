@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Informe Cala | Westfield</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/shared.css">
+  <style>
+    :root{
+      --bg:var(--gris-claro);
+      --card:var(--blanco);
+      --border:var(--gris-borde);
+      --text:var(--negro);
+      --muted:var(--gris-medio);
+      --soft:#f3f3f3;
+      --green:#4CAF50;
+      --red:#EF5350;
+    }
+    body {
+      background:var(--bg);
+      color:var(--text);
+      font-family:'Poppins',sans-serif;
+      font-size:14px;
+      line-height:1.5;
+    }
+    header {
+      background:var(--negro);
+      padding:26px 40px 28px;
+      position:relative;
+      overflow:hidden;
+    }
+    header::before{content:'';position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--amarillo)}
+    .header-top{display:flex;align-items:center;gap:16px}
+    .header-logo{
+      width:48px;height:48px;background:var(--amarillo);border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      font-size:20px;font-weight:700;color:var(--negro);flex-shrink:0;
+    }
+    header h1{margin:0;color:var(--blanco);font-size:22px;font-weight:700;letter-spacing:-.01em}
+    header p{margin:4px 0 0;color:rgba(255,255,255,.68);font-size:12px;font-weight:300}
+    .period-badge{
+      display:inline-block;margin-top:14px;background:rgba(255,192,0,.15);
+      border:1px solid rgba(255,192,0,.4);border-radius:20px;
+      padding:5px 14px;color:var(--amarillo);font-size:11px;font-weight:700;
+    }
+    main{max-width:1320px;margin:0 auto;padding:32px 28px 46px}
+    section{margin:0 0 28px}
+    h2{
+      margin:0 0 16px;font-size:11px;font-weight:700;color:var(--negro);
+      text-transform:uppercase;letter-spacing:.12em;display:flex;align-items:center;gap:10px;
+    }
+    h2::before{content:'';display:block;width:4px;height:16px;background:var(--amarillo);border-radius:2px}
+    h3{font-size:14px;margin:0 0 8px;color:var(--negro);font-weight:700}
+    .grid { display:grid; gap:14px; }
+    .metrics { grid-template-columns: repeat(6, minmax(130px,1fr)); }
+    .two { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .panel {
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:22px;
+      box-shadow:0 1px 4px rgba(0,0,0,.06);
+    }
+    .metric {
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:18px 16px;
+      min-height:104px;
+      position:relative;
+      overflow:hidden;
+      box-shadow:0 1px 4px rgba(0,0,0,.06);
+    }
+    .metric::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:var(--amarillo)}
+    .metric:first-child{background:var(--negro);border-color:var(--negro)}
+    .metric:first-child .metric-label,.metric:first-child .metric-note{color:rgba(255,255,255,.55)}
+    .metric:first-child .metric-value{color:var(--amarillo)}
+    .metric-label{color:var(--muted);font-size:9.5px;text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+    .metric-value{font-size:25px;font-weight:700;margin:7px 0 3px;letter-spacing:-.02em}
+    .metric-note{color:var(--muted);font-size:10.5px;font-weight:300}
+    .callout {
+      border-left:4px solid var(--amarillo);
+      background:#fff8df;
+      padding:14px 16px;
+      border-radius:8px;
+      color:var(--gris-oscuro);
+      font-size:13px;
+      line-height:1.65;
+    }
+    table {
+      width:100%;
+      border-collapse:collapse;
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:12px;
+      overflow:hidden;
+      font-size:12px;
+      box-shadow:0 1px 4px rgba(0,0,0,.06);
+    }
+    th, td {
+      padding:10px 12px;
+      border-bottom:1px solid var(--border);
+      text-align:left;
+      vertical-align:top;
+    }
+    th {
+      background:var(--negro);
+      color:var(--blanco);
+      font-size:9.5px;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      white-space:nowrap;
+    }
+    td{color:var(--gris-oscuro);font-size:11.5px}
+    tr:hover td{background:#fff8df}
+    tr:last-child td { border-bottom:0; }
+    .bar {
+      display:inline-block;
+      width:70px;
+      height:7px;
+      background:var(--soft);
+      border-radius:999px;
+      overflow:hidden;
+      margin-left:6px;
+      vertical-align:middle;
+    }
+    .bar span { display:block; height:100%; background:var(--amarillo); }
+    .notes{margin:12px 0 0;padding-left:18px;color:var(--gris-oscuro);font-weight:300;line-height:1.75}
+    .notes li{margin:6px 0}
+    .empty { color:var(--muted); margin:0; }
+    .small{color:var(--muted);font-size:11px;font-weight:300;margin-top:14px}
+    .preview {
+      width:92px;
+      height:92px;
+      object-fit:cover;
+      border:1px solid var(--border);
+      border-radius:8px;
+      background:var(--bg);
+      display:block;
+    }
+    .analysis-grid {
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap:14px;
+    }
+    @media (max-width: 980px) {
+      header, main { padding-left:16px; padding-right:16px; }
+      .metrics, .two, .analysis-grid { grid-template-columns:1fr; }
+      table { display:block; overflow-x:auto; white-space:nowrap; }
+    }
+  </style>
+</head>
+<body>
+  <a class="hub-back" href="index.html">← Hub</a>
+  <header>
+    <div class="header-top">
+      <div class="header-logo">W</div>
+      <div>
+        <h1>Informe Cala | Westfield</h1>
+        <p>Meta Ads + LinkedIn Ads · lectura cross-platform de captación, audiencia y conversión.</p>
+      </div>
+    </div>
+    <div class="period-badge">Periodo: 1 de abril a 25 de mayo de 2026</div>
+  </header>
+  <main>
+    <section class="grid metrics">
+      
+    <div class="metric">
+      <div class="metric-label">Inversión total</div>
+      <div class="metric-value">USD 4,631.31</div>
+      <div class="metric-note">Meta + LinkedIn</div>
+    </div>
+    
+      
+    <div class="metric">
+      <div class="metric-label">Leads totales</div>
+      <div class="metric-value">153</div>
+      <div class="metric-note">Formularios y one-click leads</div>
+    </div>
+    
+      
+    <div class="metric">
+      <div class="metric-label">CPL promedio</div>
+      <div class="metric-value">USD 30.27</div>
+      <div class="metric-note">Costo por lead total</div>
+    </div>
+    
+      
+    <div class="metric">
+      <div class="metric-label">Audiencia impactada</div>
+      <div class="metric-value">158,349</div>
+      <div class="metric-note">Reach Meta + sends LinkedIn</div>
+    </div>
+    
+      
+    <div class="metric">
+      <div class="metric-label">Interacciones clave</div>
+      <div class="metric-value">44,695</div>
+      <div class="metric-note">Clics Meta + opens LinkedIn</div>
+    </div>
+    
+      
+    <div class="metric">
+      <div class="metric-label">Peso LinkedIn en leads</div>
+      <div class="metric-value">98.7%</div>
+      <div class="metric-note">151 de 153 leads</div>
+    </div>
+    
+    </section>
+
+    <section class="grid two">
+      <div class="panel">
+        <h2>Lectura Ejecutiva</h2>
+        <div class="callout">
+          LinkedIn concentra el resultado de captación desde abril: 151 leads con USD 25.46 de CPL. Meta aporta escala de clics, pero solo 2 leads en el periodo.
+        </div>
+        <ul class="notes">
+          <li>La audiencia impactada estimada fue de 158,349: 72,297 personas alcanzadas en Meta y 86,052 envíos en LinkedIn.</li>
+          <li>Perú fue la campaña más eficiente de LinkedIn por volumen: 77 leads desde Sponsored Messaging.</li>
+          <li>En Meta, `Cala_ADE_Meta_Conversiones_Westfield` generó 7,870 clics y 0 leads; conviene revisar evento, formulario o calidad de tráfico.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h2>Comparativo Por Plataforma</h2>
+        <table><thead><tr><th>Plataforma</th><th>Inversión</th><th>Audiencia</th><th>Interacción</th><th>Leads</th><th>CPL</th></tr></thead><tbody><tr><td>Meta</td><td>USD 786.22</td><td>72,297 reach</td><td>7,920 clics</td><td>2</td><td>USD 393.11</td></tr><tr><td>LinkedIn</td><td>USD 3,845.09</td><td>86,052 sends</td><td>36,775 opens</td><td>151</td><td>USD 25.46</td></tr></tbody></table>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Análisis Ampliado</h2>
+      <div class="analysis-grid">
+        <div>
+          <h3>Captación</h3>
+          <ul class="notes">
+            <li>LinkedIn generó 151 leads, equivalente al 98.7% del total.</li>
+            <li>El CPL de LinkedIn fue USD 25.46, frente a USD 393.11 en Meta.</li>
+            <li>La campaña con mayor aporte fue Becas Cala - Perú Summer26: 77 leads.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Audiencia</h3>
+          <ul class="notes">
+            <li>LinkedIn impactó por envío directo a 86,052 perfiles profesionales.</li>
+            <li>La tasa de apertura de LinkedIn fue 42.7%, con 36,775 aperturas.</li>
+            <li>Meta alcanzó 72,297 personas y produjo 7,920 clics.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Conversión</h3>
+          <ul class="notes">
+            <li>La tasa lead/envío de LinkedIn fue 0.18%.</li>
+            <li>El CTR agregado de Meta fue 6.72%.</li>
+            <li>La conversión click→lead de Meta fue 0.03%, una señal clara de fricción post-clic.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Campañas LinkedIn</h2>
+      <table><thead><tr><th>Campaña</th><th>Estado</th><th>Fechas</th><th>Inversión</th><th>Sends</th><th>Opens</th><th>Leads</th><th>CPL</th></tr></thead><tbody><tr><td>Becas Cala - Colombia Summer26</td><td>COMPLETED</td><td>2026-04-17 a 2026-05-12</td><td>USD 1,153.91</td><td>27,374</td><td>11,746</td><td>33 <span class="bar"><span style="width:42.9%"></span></span></td><td>USD 34.97</td></tr><tr><td>Becas Cala - LATAM - Octubre2025</td><td>COMPLETED</td><td>2025-07-10 a abierta</td><td>USD 0.00</td><td>0</td><td>0</td><td>0 <span class="bar"><span style="width:0.0%"></span></span></td><td>USD 0.00</td></tr><tr><td>Becas Cala - MX Summer26</td><td>COMPLETED</td><td>2026-04-17 a 2026-05-12</td><td>USD 850.56</td><td>15,040</td><td>6,829</td><td>20 <span class="bar"><span style="width:26.0%"></span></span></td><td>USD 42.53</td></tr><tr><td>Becas Cala - Perú Summer26</td><td>COMPLETED</td><td>2026-04-17 a 2026-05-12</td><td>USD 897.95</td><td>28,098</td><td>11,577</td><td>77 <span class="bar"><span style="width:100.0%"></span></span></td><td>USD 11.66</td></tr><tr><td>Becas Cala - USA - Octubre2025</td><td>COMPLETED</td><td>2025-07-10 a abierta</td><td>USD 0.00</td><td>0</td><td>0</td><td>0 <span class="bar"><span style="width:0.0%"></span></span></td><td>USD 0.00</td></tr><tr><td>Becas Cala - USA Summer26</td><td>COMPLETED</td><td>2026-04-17 a 2026-05-12</td><td>USD 569.76</td><td>11,024</td><td>4,878</td><td>20 <span class="bar"><span style="width:26.0%"></span></span></td><td>USD 28.49</td></tr><tr><td>Campaña Cala STEM</td><td>PAUSED</td><td>2026-04-28 a abierta</td><td>USD 372.91</td><td>4,516</td><td>1,745</td><td>1 <span class="bar"><span style="width:1.3%"></span></span></td><td>USD 372.91</td></tr><tr><td>adcom_westfield_lkd_conv_lkd_becascala_inmail_colombia</td><td>PAUSED</td><td>2025-03-25 a abierta</td><td>USD 0.00</td><td>0</td><td>0</td><td>0 <span class="bar"><span style="width:0.0%"></span></span></td><td>USD 0.00</td></tr></tbody></table>
+    </section>
+
+    <section class="panel">
+      <h2>Piezas / Anuncios LinkedIn</h2>
+      <p class="small">Solo se incluyen piezas con al menos 1 lead. Son Sponsored Messaging, por eso la métrica principal es envíos, aperturas y leads.</p>
+      <table><thead><tr><th>Campaña</th><th>Asunto</th><th>Inversión</th><th>Sends</th><th>Opens</th><th>Leads</th><th>Landing clicks</th><th>CPL</th></tr></thead><tbody><tr><td>Becas Cala - Perú Summer26</td><td>10 becas para estudiar tu MBA ¿Serás uno de los ganadores?</td><td>USD 363.72</td><td>10,984</td><td>4,364</td><td>44</td><td>6</td><td>USD 8.27</td></tr><tr><td>Becas Cala - Perú Summer26</td><td>Estudia tu MBA con una beca y financiación sin intereses</td><td>USD 177.00</td><td>6,347</td><td>2,728</td><td>18</td><td>2</td><td>USD 9.83</td></tr><tr><td>Becas Cala - Colombia Summer26</td><td>Estudia tu MBA con una beca y financiación sin intereses</td><td>USD 434.22</td><td>9,893</td><td>4,265</td><td>15</td><td>2</td><td>USD 28.95</td></tr><tr><td>Becas Cala - MX Summer26</td><td>10 becas para estudiar tu MBA ¿Serás uno de los ganadores?</td><td>USD 329.61</td><td>5,805</td><td>2,547</td><td>11</td><td>3</td><td>USD 29.96</td></tr><tr><td>Becas Cala - Colombia Summer26</td><td>10 becas para estudiar tu MBA ¿Serás uno de los ganadores?</td><td>USD 258.03</td><td>7,249</td><td>3,125</td><td>11</td><td>3</td><td>USD 23.46</td></tr><tr><td>Becas Cala - Perú Summer26</td><td>Mejora tu situación laboral con un MBA. Estudia con una beca</td><td>USD 168.82</td><td>6,440</td><td>2,767</td><td>9</td><td>1</td><td>USD 18.76</td></tr><tr><td>Becas Cala - USA Summer26</td><td>10 becas para estudiar tu MBA ¿Serás uno de los ganadores?</td><td>USD 103.40</td><td>2,809</td><td>1,256</td><td>8</td><td>3</td><td>USD 12.93</td></tr><tr><td>Becas Cala - USA Summer26</td><td>Estudia tu MBA con una beca y financiación sin intereses</td><td>USD 95.26</td><td>2,696</td><td>1,244</td><td>8</td><td>1</td><td>USD 11.91</td></tr><tr><td>Becas Cala - Perú Summer26</td><td>Quedan pocos días: asegura tu beca para estudiar tu MBA</td><td>USD 188.42</td><td>4,327</td><td>1,718</td><td>6</td><td>0</td><td>USD 31.40</td></tr><tr><td>Becas Cala - Colombia Summer26</td><td>Mejora tu situación laboral con un MBA. Estudia con una beca</td><td>USD 251.04</td><td>7,369</td><td>3,196</td><td>5</td><td>0</td><td>USD 50.21</td></tr><tr><td>Becas Cala - MX Summer26</td><td>Estudia tu MBA con una beca y financiación sin intereses</td><td>USD 165.73</td><td>3,360</td><td>1,562</td><td>5</td><td>0</td><td>USD 33.15</td></tr><tr><td>Becas Cala - USA Summer26</td><td>Quedan pocos días: asegura tu beca para estudiar tu MBA</td><td>USD 244.31</td><td>2,761</td><td>1,135</td><td>4</td><td>1</td><td>USD 61.08</td></tr><tr><td>Becas Cala - Colombia Summer26</td><td>Quedan pocos días: asegura tu beca para estudiar tu MBA</td><td>USD 210.62</td><td>2,863</td><td>1,160</td><td>2</td><td>0</td><td>USD 105.31</td></tr><tr><td>Becas Cala - MX Summer26</td><td>Quedan pocos días: asegura tu beca para estudiar tu MBA</td><td>USD 183.32</td><td>2,516</td><td>1,118</td><td>2</td><td>0</td><td>USD 91.66</td></tr><tr><td>Becas Cala - MX Summer26</td><td>Mejora tu situación laboral con un MBA. Estudia con una beca</td><td>USD 171.90</td><td>3,359</td><td>1,602</td><td>2</td><td>0</td><td>USD 85.95</td></tr><tr><td>Campaña Cala STEM</td><td>Quedan pocos días: asegura tu beca para estudiar tu MBA</td><td>USD 107.78</td><td>1,254</td><td>481</td><td>1</td><td>1</td><td>USD 107.78</td></tr></tbody></table>
+    </section>
+
+    <section class="panel">
+      <h2>Campañas Meta</h2>
+      <table><thead><tr><th>Campaña</th><th>Estado</th><th>Objetivo</th><th>Inversión</th><th>Reach</th><th>Impresiones</th><th>Clics</th><th>Leads</th><th>CPL</th></tr></thead><tbody><tr><td>Cala STEM_ADE_Meta_Conversiones+Leads_Westfield</td><td>PAUSED</td><td>OUTCOME_LEADS</td><td>USD 234.97</td><td>1,831</td><td>4,476</td><td>50 <span class="bar"><span style="width:0.6%"></span></span></td><td>2</td><td>USD 117.48</td></tr><tr><td>Cala_ADE_Meta_Conversiones_Westfield</td><td>PAUSED</td><td>OUTCOME_LEADS</td><td>USD 551.25</td><td>70,466</td><td>113,463</td><td>7,870 <span class="bar"><span style="width:100.0%"></span></span></td><td>0</td><td>USD 0.00</td></tr><tr><td>Cala_Captación_ADE_Meta_Conversiones_Westfield</td><td>ACTIVE</td><td>OUTCOME_LEADS</td><td>USD 0.00</td><td>0</td><td>0</td><td>0 <span class="bar"><span style="width:0.0%"></span></span></td><td>0</td><td>USD 0.00</td></tr><tr><td>Cala_Expectativa_ADE_Meta_Alcance_Westfield</td><td>PAUSED</td><td>OUTCOME_AWARENESS</td><td>USD 0.00</td><td>0</td><td>0</td><td>0 <span class="bar"><span style="width:0.0%"></span></span></td><td>0</td><td>USD 0.00</td></tr></tbody></table>
+    </section>
+
+    <section class="panel">
+      <h2>Top 5 Anuncios Meta</h2>
+      <table><thead><tr><th>Preview</th><th>Campaña</th><th>Anuncio</th><th>Estado</th><th>Inversión</th><th>Reach</th><th>Impresiones</th><th>Clics</th><th>Leads</th><th>CTR</th></tr></thead><tbody><tr><td><img class="preview" src="https://scontent.fbog22-1.fna.fbcdn.net/v/t45.1600-4/679497609_4345869485628991_5992889762124013166_n.jpg?_nc_cat=106&amp;ccb=1-7&amp;_nc_ohc=xhOkFIZ44foQ7kNvwF7db7q&amp;_nc_oc=Ado2HyErp09XnJyDUchUN1aLEWZhUI_y6NuNSE3c1LX3FfN-GFgTnD1oQ-lhsYYeKj0&amp;_nc_zt=1&amp;_nc_ht=scontent.fbog22-1.fna&amp;edm=ANIILHsEAAAA&amp;_nc_gid=jfUc0Uj_j7Lq1XYP_sammA&amp;_nc_tpa=Q5bMBQFy941mjNIpjlG-TBrgKk38SWVmVD8jU2WwGKeuOTlcUSAvjEph8iat7kzpCJm3l0sWRDn0Haas3g&amp;stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&amp;ur=52f3c4&amp;_nc_sid=58080a&amp;oh=00_Af7SGKV7KA1TqbupIKqcOPhNln-9S_Xq4qGCdoaPVoZJeA&amp;oe=6A1A3CED" alt="Preview Post_CALA STEM#1 28/04"></td><td>Cala STEM_ADE_Meta_Conversiones+Leads_Westfield</td><td>Post_CALA STEM#1 28/04</td><td>CAMPAIGN_PAUSED</td><td>USD 182.17</td><td>1,691</td><td>3,568</td><td>38</td><td>2</td><td>1.07%</td></tr><tr><td><img class="preview" src="https://scontent.fbog22-1.fna.fbcdn.net/v/t15.5256-10/674982948_1598005294619192_5389987010711581129_n.jpg?_nc_cat=102&amp;ccb=1-7&amp;_nc_ohc=-1L9rZ9QZiYQ7kNvwHTGA1S&amp;_nc_oc=AdqDZ7QBpgZNS_31NgPmVusXeUk9vf9V9B9ZsU-6_DfKomzU7SHf2_gcZ5sP97S5JXw&amp;_nc_zt=23&amp;_nc_ht=scontent.fbog22-1.fna&amp;edm=ANIILHsEAAAA&amp;_nc_gid=kr6W6Up3FBr2lEN2QkGYkg&amp;_nc_tpa=Q5bMBQHhAKgQcug48FGHM4787WqIPfoxoTBUP1x6Y_Sy8asxj616NkowaC3bRdz1BsbjnaN44YZ489X1Pg&amp;stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&amp;ur=5fad0e&amp;_nc_sid=58080a&amp;oh=00_Af6C8XMdOPoZ9wYDbN7SXVmFSh4nYRx1fefVl54z8qirJg&amp;oe=6A1A5904" alt="Preview Testimonio 21/04"></td><td>Cala_ADE_Meta_Conversiones_Westfield</td><td>Testimonio 21/04</td><td>CAMPAIGN_PAUSED</td><td>USD 95.80</td><td>26,363</td><td>39,218</td><td>3,671</td><td>0</td><td>9.36%</td></tr><tr><td><img class="preview" src="https://scontent.fbog22-1.fna.fbcdn.net/v/t15.5256-10/676252992_1004498982021758_3989460515059518511_n.jpg?_nc_cat=111&amp;ccb=1-7&amp;_nc_ohc=7brH5RcjZTEQ7kNvwE5XGOs&amp;_nc_oc=AdoLAppM6JOVZZLLMVHLLmmupSpEDT5glm1Ox7-jvVBwc0_WGd6RXkRv6eicfVaBLLU&amp;_nc_zt=23&amp;_nc_ht=scontent.fbog22-1.fna&amp;edm=ANIILHsEAAAA&amp;_nc_gid=kr6W6Up3FBr2lEN2QkGYkg&amp;_nc_tpa=Q5bMBQEqVGqxT6xAcwTHUQz28Oxhcnn7fdstD0ScvEQhXLx5ZAeHtoLkPHpB8r_zYbGBsNxMEGhASXzwIQ&amp;stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&amp;ur=5fad0e&amp;_nc_sid=58080a&amp;oh=00_Af4CjHQ40Xou6AAreDeqhhGIR7C0Wj2XZgrTTc8M-VAciw&amp;oe=6A1A3450" alt="Preview Video instructivo 21/04"></td><td>Cala_ADE_Meta_Conversiones_Westfield</td><td>Video instructivo 21/04</td><td>CAMPAIGN_PAUSED</td><td>USD 58.21</td><td>6,803</td><td>10,613</td><td>968</td><td>0</td><td>9.12%</td></tr><tr><td><img class="preview" src="https://scontent.fbog22-1.fna.fbcdn.net/v/t15.5256-10/678306602_2439909936514632_7993757657125603962_n.jpg?_nc_cat=110&amp;ccb=1-7&amp;_nc_ohc=l7MoxoFIIA8Q7kNvwG-72xD&amp;_nc_oc=AdqUqXPlTaRqio8v3OIHBDgWl_4Tz9kgWF-k72XhDGouwBXi0p38vCCRjoFpfNpCnYs&amp;_nc_zt=23&amp;_nc_ht=scontent.fbog22-1.fna&amp;edm=ANIILHsEAAAA&amp;_nc_gid=kr6W6Up3FBr2lEN2QkGYkg&amp;_nc_tpa=Q5bMBQG_cpG_wE18eWVtKAVsB-IR0siLhm78agQaNVDq3hyJo0MTlfWyRNVg3eJ6ilAMK3tCGRCqEm-v8Q&amp;stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&amp;ur=5fad0e&amp;_nc_sid=58080a&amp;oh=00_Af4OVVjSBc1f_s_5LlhOdCXK--ISYuy8sbmCw046yHQzbQ&amp;oe=6A1A3A6F" alt="Preview Testimonio 21/04"></td><td>Cala_ADE_Meta_Conversiones_Westfield</td><td>Testimonio 21/04</td><td>CAMPAIGN_PAUSED</td><td>USD 50.21</td><td>527</td><td>854</td><td>23</td><td>0</td><td>2.69%</td></tr><tr><td><img class="preview" src="https://scontent.fbog22-1.fna.fbcdn.net/v/t15.5256-10/676252992_1004498982021758_3989460515059518511_n.jpg?_nc_cat=111&amp;ccb=1-7&amp;_nc_ohc=7brH5RcjZTEQ7kNvwE5XGOs&amp;_nc_oc=AdoLAppM6JOVZZLLMVHLLmmupSpEDT5glm1Ox7-jvVBwc0_WGd6RXkRv6eicfVaBLLU&amp;_nc_zt=23&amp;_nc_ht=scontent.fbog22-1.fna&amp;edm=ANIILHsEAAAA&amp;_nc_gid=kr6W6Up3FBr2lEN2QkGYkg&amp;_nc_tpa=Q5bMBQFrgkxx8HvTy8Eb4kUYxiSN47cTIxx2NSbVpOwLOn3H-15DXxOO75884tPS2NpATN2GIZFYjevkYA&amp;stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&amp;ur=5fad0e&amp;_nc_sid=58080a&amp;oh=00_Af7dPAVHFK7G_O1MYZkTFE_Svs5ctVVxoaRAufzb6p8MMA&amp;oe=6A1A3450" alt="Preview Video instructivo 21/04"></td><td>Cala_ADE_Meta_Conversiones_Westfield</td><td>Video instructivo 21/04</td><td>CAMPAIGN_PAUSED</td><td>USD 49.20</td><td>5,906</td><td>9,030</td><td>846</td><td>0</td><td>9.37%</td></tr></tbody></table>
+    </section>
+
+    <section class="panel">
+      <h2>Conclusiones y Recomendaciones</h2>
+      <ul class="notes">
+        <li>LinkedIn debe mantenerse como canal principal de lead generation para Cala mientras el CPL siga cerca de USD 25.46 y la tasa de apertura se mantenga por encima de 40%.</li>
+        <li>Meta necesita auditoría de conversión: hay clics baratos y volumen, pero la señal de lead no acompaña. Revisar evento, formulario, UTMs, landing y consistencia del mensaje.</li>
+        <li>Priorizar aprendizaje de mensajes de Perú y Colombia en LinkedIn: concentran 110 leads entre ambas campañas Summer26.</li>
+        <li>Escalar de forma controlada las variantes de asunto con leads, no solo las de mayor apertura: el objetivo real es lead, no open.</li>
+        <li>Revisar o apagar campañas Meta que aparecen activas sin entrega efectiva para evitar lectura operativa confusa.</li>
+        <li>Para el próximo corte, conviene cruzar leads con CRM para medir calidad real por país y asunto: Perú trae volumen, pero falta validar calidad comercial.</li>
+      </ul>
+      <p class="small">Fuente técnica: reports\linkedin_westfield\cala_since_20260401_cross_platform_review_20260525.json. Generado el 2026-05-25T16:47:00.102437+00:00.</p>
+    </section>
+  </main>
+</body>
+</html>
