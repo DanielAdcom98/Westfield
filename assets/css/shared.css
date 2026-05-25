@@ -51,7 +51,7 @@ body,
 }
 
 .wbs-brand-logo {
-  position: fixed;
+  position: absolute;
   top: 16px;
   left: 22px;
   z-index: 9990;
@@ -82,6 +82,13 @@ body:has(header) header {
 
 body:has(header) .header-logo {
   display: none !important;
+}
+
+.metric:first-child .metric-label,
+.metric:first-child .metric-note,
+.kpi.accent .kpi-label,
+.kpi.accent .kpi-sub {
+  color: rgba(255, 255, 255, .76) !important;
 }
 
 .slide-cover .wbs-brand-logo,
