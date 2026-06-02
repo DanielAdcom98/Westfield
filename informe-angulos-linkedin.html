@@ -1,0 +1,512 @@
+﻿<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Westfield | Analisis de Angulos LinkedIn InMail</title>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/shared.css">
+  <style>
+    :root{
+      --bg:var(--gris-claro);
+      --card:rgba(255,255,255,.94);
+      --border:var(--gris-borde);
+      --text:var(--negro);
+      --muted:var(--gris-medio);
+      --soft:#FFF8DF;
+      --blue:#EAF3FF;
+      --green:#EEF8F0;
+      --orange:#FFF7ED;
+      --shadow:var(--shadow-card);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--font-body);
+      color:var(--text);
+      background-color:var(--blanco);
+      background-image:var(--westfield-pattern);
+      background-size:92px 104px;
+      line-height:1.5;
+    }
+    .wbs-brand-logo{position:fixed;right:22px;top:18px;width:106px;z-index:500}
+    body .hub-back{
+      position:fixed;left:auto;right:24px;top:24px;z-index:1200;
+      background:var(--negro);color:var(--amarillo);border:1px solid var(--negro);
+      border-radius:999px;padding:8px 14px;text-decoration:none;font-size:.74rem;font-weight:700;
+      box-shadow:0 8px 24px rgba(0,0,0,.16);
+    }
+    .pdf-download{
+      position:fixed;right:22px;bottom:22px;z-index:500;border:0;border-radius:999px;
+      background:var(--negro);color:var(--amarillo);padding:11px 18px;
+      font-family:var(--font-body);font-size:.76rem;font-weight:700;
+      box-shadow:0 8px 24px rgba(0,0,0,.22);cursor:pointer;
+    }
+    header{
+      background:var(--negro);
+      color:var(--blanco);
+      padding:64px 44px 34px;
+      position:relative;
+      overflow:hidden;
+    }
+    header::before{content:'';position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--amarillo)}
+    .header-tag{
+      color:var(--amarillo);font-size:.72rem;font-weight:700;text-transform:uppercase;
+      letter-spacing:2px;margin-bottom:10px;
+    }
+    h1,h2,h3{margin:0;color:var(--negro)}
+    header h1{
+      color:var(--blanco);font-family:var(--font-title);font-size:clamp(2.2rem,5vw,4.4rem);
+      line-height:.96;font-weight:700;letter-spacing:0;max-width:980px;
+    }
+    header p{margin:16px 0 0;color:rgba(255,255,255,.72);max-width:980px;font-weight:300;font-style:italic}
+    .period-badge{
+      display:inline-block;margin-top:18px;background:rgba(255,192,0,.14);border:1px solid rgba(255,192,0,.42);
+      border-radius:999px;padding:6px 14px;color:var(--amarillo);font-size:.72rem;font-weight:700;
+    }
+    main{max-width:1360px;margin:auto;padding:30px 34px 58px}
+    section{margin:0 0 28px;scroll-margin-top:18px}
+    .section-title{display:flex;align-items:center;gap:14px;margin:34px 0 16px}
+    .section-title .bar-label-deco{background:var(--amarillo);width:46px;height:6px;border-radius:999px}
+    .section-title h2{
+      font-family:var(--font-title);color:var(--amarillo);font-size:clamp(2rem,4vw,3.6rem);
+      line-height:.96;text-transform:none;letter-spacing:0;
+    }
+    .grid{display:grid;gap:14px}
+    .metrics{grid-template-columns:repeat(5,minmax(150px,1fr))}
+    .two{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .three{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .card,.panel,.metric,.table-wrap,.note,.claim{
+      border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);
+    }
+    .card,.panel,.metric,.table-wrap{background:var(--card)}
+    .panel{padding:22px}
+    .metric{padding:18px;min-height:112px;position:relative;overflow:hidden}
+    .metric::after{content:'';position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--amarillo)}
+    .metric.accent{background:var(--negro);border-color:var(--negro)}
+    .metric.accent .metric-value{color:var(--amarillo)}
+    .metric.accent .metric-label,.metric.accent .metric-note{color:rgba(255,255,255,.58)}
+    .metric-label{font-size:.68rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+    .metric-value{font-size:2.05rem;line-height:1;font-weight:700;margin:10px 0 5px;color:var(--negro)}
+    .metric-note{font-size:.74rem;color:var(--gris-oscuro);font-weight:300}
+    .panel h3,.card h3{font-size:.98rem;margin-bottom:8px;font-weight:700}
+    .panel p,.card p{font-size:.84rem;color:var(--gris-oscuro);font-weight:300;margin:0 0 10px}
+    .note{background:var(--soft);border-left:4px solid var(--amarillo);padding:16px 18px}
+    .note p{margin:0;color:var(--gris-oscuro);font-size:.86rem;font-weight:300}
+    .claim{background:var(--negro);border-left:4px solid var(--amarillo);padding:18px 20px}
+    .claim p{margin:0;color:var(--blanco);font-size:.9rem;font-weight:300}
+    .claim strong{color:var(--amarillo)}
+    .angle-card{padding:18px;border-left:4px solid var(--amarillo)}
+    .angle-card .num{
+      display:inline-block;background:var(--negro);color:var(--amarillo);border-radius:999px;
+      padding:3px 10px;font-size:.7rem;font-weight:700;margin-bottom:8px;
+    }
+    .angle-card strong{display:block;font-size:.92rem;color:var(--negro);line-height:1.25;margin-bottom:8px}
+    .angle-card p{font-size:.78rem}
+    .bar-row{display:grid;grid-template-columns:minmax(180px,1.2fr) minmax(160px,2fr) 80px;gap:10px;align-items:center;margin:10px 0;font-size:.78rem}
+    .bar-label{color:var(--gris-oscuro);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .bar-track{height:10px;background:var(--gris-borde);border-radius:999px;overflow:hidden}
+    .bar-track span{display:block;height:100%;background:var(--amarillo);border-radius:999px}
+    .bar-value{text-align:right;font-weight:700}
+    .pill{display:inline-block;border:1px solid var(--border);background:var(--gris-claro);border-radius:999px;padding:3px 9px;font-size:.68rem;font-weight:700;margin:2px;color:var(--negro)}
+    .pill.dark{background:var(--negro);color:var(--amarillo);border-color:var(--negro)}
+    table{width:100%;border-collapse:collapse;font-size:.76rem;background:var(--blanco)}
+    th,td{padding:10px 12px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}
+    th{background:var(--negro);color:var(--blanco);font-size:.68rem;text-transform:uppercase;letter-spacing:.06em}
+    td{color:var(--gris-oscuro);font-weight:300}
+    tbody tr:nth-child(even) td{background:var(--gris-claro)}
+    tbody tr:hover td{background:#FFFDE7}
+    tr:last-child td{border-bottom:0}
+    .table-wrap{overflow:auto}
+    .group-card{padding:20px}
+    .group-card.general{background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(255,248,223,.88))}
+    .group-card.global{background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(238,248,240,.9))}
+    .group-card.events{background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(234,243,255,.9))}
+    .small{color:var(--muted);font-size:.72rem;font-weight:300}
+    ul.insights{margin:10px 0 0;padding-left:18px}
+    ul.insights li{margin:8px 0;color:var(--gris-oscuro);font-size:.84rem;font-weight:300}
+    ul.insights strong{color:var(--negro)}
+    @media(max-width:980px){
+      header,main{padding-left:18px;padding-right:18px}
+      .metrics,.two,.three{grid-template-columns:1fr}
+      .bar-row{grid-template-columns:1fr;gap:4px}
+      .bar-value{text-align:left}
+      .wbs-brand-logo{width:86px}
+    }
+    @media print{
+      .hub-back,.pdf-download{display:none!important}
+      body{background:white}
+      main{max-width:none;padding:18px}
+      section{break-inside:avoid}
+      .card,.panel,.metric,.table-wrap,.note,.claim{box-shadow:none}
+    }
+  </style>
+</head>
+<body>
+  <img class="wbs-brand-logo" src="assets/img/logo-wbs-azul.png" alt="Westfield Business School">
+  <a class="hub-back" href="index.html">Hub</a>
+  <button class="pdf-download" type="button" onclick="window.print()">Descargar PDF</button>
+
+  <header>
+    <div class="header-tag">LinkedIn Sponsored Messaging</div>
+    <h1>Analisis estrategico de angulos de venta</h1>
+    <p>Lectura por grupos de campana sobre Sponsored Messaging de Westfield: que territorio comercial domina, donde hay balance y que conviene probar en la siguiente rotacion creativa.</p>
+    <div class="period-badge">Informacion de LinkedIn: 1 de abril a 2 de junio de 2026</div>
+  </header>
+
+  <main>
+    <section class="grid metrics">
+      <div class="metric accent">
+        <div class="metric-label">Leads analizados</div>
+        <div class="metric-value">242</div>
+        <div class="metric-note">Cala + campanas generales, eventos y becas</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Envios</div>
+        <div class="metric-value">141,297</div>
+        <div class="metric-note">Envios acumulados en LinkedIn</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Tasa de apertura</div>
+        <div class="metric-value">44.8%</div>
+        <div class="metric-note">63,259 aperturas sobre envios</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">CPL promedio</div>
+        <div class="metric-value">USD 25.33</div>
+        <div class="metric-note">USD 6,130.70 invertidos</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Mejor angulo por leads</div>
+        <div class="metric-value">A6</div>
+        <div class="metric-note">Oportunidad/acceso: 138 leads con Cala incluido</div>
+      </div>
+    </section>
+
+    <section class="grid two">
+      <div class="panel">
+        <div class="section-title" style="margin-top:0"><span class="bar-label-deco"></span><h2>Lectura ejecutiva</h2></div>
+        <div class="claim">
+          <p><strong>Con Cala integrado, el mejor territorio general es oportunidad/acceso.</strong> La combinacion de beca, financiacion y camino claro de aplicacion genera 138 leads. En las demas lineas, datos/tecnologia y perfil hibrido son los angulos con mejor respuesta por valor profesional tangible.</p>
+        </div>
+        <ul class="insights">
+          <li><strong>A6 Oportunidad/acceso</strong> lidera el analisis general con Cala incluido: 138 leads, impulsado principalmente por becas y financiacion.</li>
+          <li><strong>A3 Datos/tecnologia</strong> lidera fuera de Cala: 30 leads, 48.1% de apertura y USD 26.22 de CPL. Es el angulo mas fuerte para Masterclass/STEM y mensajes de decision.</li>
+          <li><strong>A4 Perfil hibrido</strong> confirma diferenciacion: 23 leads, 48.4% de apertura y USD 29.42 de CPL. Funciona cuando el mensaje conecta negocio, tecnologia y futuro laboral.</li>
+          <li><strong>A2 Liderazgo global</strong> tiene el CPL mas bajo entre angulos con leads fuera de Cala: USD 23.14.</li>
+          <li><strong>A5 Prueba social</strong> funciona mejor como capa de confianza que como motor principal de captacion.</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <div class="section-title" style="margin-top:0"><span class="bar-label-deco"></span><h2>Ranking general por leads</h2></div>
+        <div class="bar-row"><div class="bar-label">6. Oportunidad/acceso</div><div class="bar-track"><span style="width:100%"></span></div><div class="bar-value">138 leads</div></div>
+        <div class="bar-row"><div class="bar-label">3. Datos, tecnologia y decisiones</div><div class="bar-track"><span style="width:22%"></span></div><div class="bar-value">30 leads</div></div>
+        <div class="bar-row"><div class="bar-label">4. Perfil hibrido y competitividad futura</div><div class="bar-track"><span style="width:17%"></span></div><div class="bar-value">23 leads</div></div>
+        <div class="bar-row"><div class="bar-label">2. Liderazgo global y proyeccion internacional</div><div class="bar-track"><span style="width:14%"></span></div><div class="bar-value">20 leads</div></div>
+        <div class="bar-row"><div class="bar-label">1/5. Ascenso + prueba social Cala</div><div class="bar-track"><span style="width:12%"></span></div><div class="bar-value">16 leads</div></div>
+        <div class="bar-row"><div class="bar-label">1. Ascenso profesional</div><div class="bar-track"><span style="width:9%"></span></div><div class="bar-value">12 leads</div></div>
+        <div class="bar-row"><div class="bar-label">5. Credibilidad y prueba social</div><div class="bar-track"><span style="width:2%"></span></div><div class="bar-value">3 leads</div></div>
+        <p class="small" style="margin-top:14px">Lectura: Cala cambia el ranking general. El acceso economico claro supera a los demas territorios, mientras A3 y A4 lideran los mensajes de valor academico/profesional.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title"><span class="bar-label-deco"></span><h2>Performance por angulo</h2></div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Angulo</th><th>Ads</th><th>Envios</th><th>Aperturas</th><th>Open rate</th><th>Leads</th><th>Lead / envio</th><th>Costo</th><th>CPL</th><th>Lectura</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>3. Dominio de datos, tecnologia y decisiones</strong></td><td>5</td><td>10,408</td><td>5,007</td><td>48.1%</td><td>30</td><td>0.29%</td><td>USD 786.73</td><td>USD 26.22</td><td>Mejor volumen y buena eficiencia. Prioridad para STEM, Masterclass y mensajes de expertise.</td></tr>
+            <tr><td><strong>4. Perfil hibrido y competitividad futura</strong></td><td>4</td><td>8,400</td><td>4,067</td><td>48.4%</td><td>23</td><td>0.27%</td><td>USD 676.56</td><td>USD 29.42</td><td>Muy fuerte para diferenciar Westfield: negocio + tecnologia + carrera futura.</td></tr>
+            <tr><td><strong>2. Liderazgo global y proyeccion internacional</strong></td><td>11</td><td>17,454</td><td>8,341</td><td>47.8%</td><td>20</td><td>0.11%</td><td>USD 462.71</td><td>USD 23.14</td><td>Buen CPL, pero diluido por Global Ambassadors sin leads aun. En General responde mejor.</td></tr>
+            <tr><td><strong>1. Ascenso profesional y reposicionamiento</strong></td><td>6</td><td>14,603</td><td>6,852</td><td>46.9%</td><td>12</td><td>0.08%</td><td>USD 417.14</td><td>USD 34.76</td><td>Debe usarse con beneficio concreto, no solo como promesa aspiracional.</td></tr>
+            <tr><td><strong>6. Oportunidad de acceso y momento</strong></td><td>9</td><td>5,134</td><td>2,295</td><td>44.7%</td><td>4</td><td>0.08%</td><td>USD 176.35</td><td>USD 44.09</td><td>Sirve para deadline o beca, pero necesita combinarse con valor academico/profesional.</td></tr>
+            <tr><td><strong>5. Credibilidad, respaldo y prueba social</strong></td><td>7</td><td>3,762</td><td>1,655</td><td>44.0%</td><td>3</td><td>0.08%</td><td>USD 139.03</td><td>USD 46.34</td><td>Como pieza aislada no lidera conversion. Mejor como refuerzo dentro de secuencias.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title"><span class="bar-label-deco"></span><h2>Campanas abril-junio</h2></div>
+      <div class="grid two">
+        <div class="panel">
+          <h3>Corte 1 abril - 2 junio 2026</h3>
+          <div class="claim">
+            <p><strong>Las campanas generales, eventos y Global Ambassadors generan 92 leads con USD 28.90 de CPL.</strong> El resultado esta concentrado en tres frentes: Campana General, Peru y Masterclass. Mexico aporta volumen menor, mientras Global Ambassadors aun necesita mas volumen para evaluar conversion.</p>
+          </div>
+          <ul class="insights">
+            <li><strong>Mayor volumen:</strong> Campana General, con 36 leads y USD 38.30 de CPL.</li>
+            <li><strong>Mejor eficiencia con escala:</strong> Campana general - Peru, con 33 leads y USD 27.07 de CPL.</li>
+            <li><strong>Mejor eficiencia puntual:</strong> Masterclass 11 Junio, con 17 leads y USD 4.97 de CPL.</li>
+            <li><strong>Linea a monitorear:</strong> Global Ambassadors suma 1,954 envios y 876 aperturas, pero 0 leads.</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>Distribucion de leads</h3>
+          <div class="bar-row"><div class="bar-label">Campana General</div><div class="bar-track"><span style="width:100%"></span></div><div class="bar-value">36 leads</div></div>
+          <div class="bar-row"><div class="bar-label">Campana general - Peru</div><div class="bar-track"><span style="width:92%"></span></div><div class="bar-value">33 leads</div></div>
+          <div class="bar-row"><div class="bar-label">Masterclass 11 Junio</div><div class="bar-track"><span style="width:47%"></span></div><div class="bar-value">17 leads</div></div>
+          <div class="bar-row"><div class="bar-label">Campana general - Mexico</div><div class="bar-track"><span style="width:17%"></span></div><div class="bar-value">6 leads</div></div>
+          <div class="bar-row"><div class="bar-label">Global Ambassadors</div><div class="bar-track"><span style="width:0%"></span></div><div class="bar-value">0 leads</div></div>
+          <p class="small" style="margin-top:14px">Lectura: el rendimiento actual no esta distribuido uniformemente; esta concentrado en campanas con mensaje de valor academico/profesional claro.</p>
+        </div>
+      </div>
+      <div class="table-wrap" style="margin-top:14px">
+        <table>
+          <thead>
+            <tr><th>Grupo</th><th>Campana</th><th>Envios</th><th>Aperturas</th><th>Open rate</th><th>Leads</th><th>Costo</th><th>CPL</th><th>Lectura estrategica</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Eventos / Cierre</td><td><strong>Masterclass 11 Junio</strong></td><td>1,960</td><td>923</td><td>47.1%</td><td>17</td><td>USD 84.49</td><td>USD 4.97</td><td>Mejor eficiencia. Escalar formato evento con angulo A3: datos, tecnologia y decisiones.</td></tr>
+            <tr><td>General</td><td><strong>Campana general - Peru</strong></td><td>31,188</td><td>14,754</td><td>47.3%</td><td>33</td><td>USD 893.17</td><td>USD 27.07</td><td>Mejor equilibrio entre escala y eficiencia. Priorizar presupuesto si mantiene calidad.</td></tr>
+            <tr><td>General</td><td><strong>Campana General</strong></td><td>16,848</td><td>8,151</td><td>48.4%</td><td>36</td><td>USD 1,378.80</td><td>USD 38.30</td><td>Mayor volumen, pero CPL mas alto. Optimizar hacia A2/A4 y revisar piezas A3 con CPL elevado.</td></tr>
+            <tr><td>General</td><td><strong>Campana general - Mexico</strong></td><td>7,811</td><td>3,504</td><td>44.9%</td><td>6</td><td>USD 214.55</td><td>USD 35.76</td><td>Volumen bajo. Probar variantes de oportunidad clara tipo beca/acceso y perfil hibrido.</td></tr>
+            <tr><td>Global Ambassadors</td><td><strong>Becas Global Ambassadors - Colombia Summer26</strong></td><td>525</td><td>234</td><td>44.6%</td><td>0</td><td>USD 26.01</td><td>N/A</td><td>Volumen inicial. Monitorear hasta tener una base comparable de respuesta.</td></tr>
+            <tr><td>Global Ambassadors</td><td><strong>Becas Global Ambassadors - MX Summer26</strong></td><td>533</td><td>250</td><td>46.9%</td><td>0</td><td>USD 16.85</td><td>N/A</td><td>Buena apertura, sin conversion. Revisar si el incentivo queda suficientemente claro.</td></tr>
+            <tr><td>Global Ambassadors</td><td><strong>Becas Global Ambassadors - Peru Summer26</strong></td><td>437</td><td>200</td><td>45.8%</td><td>0</td><td>USD 25.05</td><td>N/A</td><td>Peru fue fuerte en Cala; usar ese aprendizaje para reforzar acceso y financiacion.</td></tr>
+            <tr><td>Global Ambassadors</td><td><strong>Becas Global Ambassadors - USA Summer26</strong></td><td>459</td><td>192</td><td>41.8%</td><td>0</td><td>USD 19.60</td><td>N/A</td><td>Menor apertura del grupo. Reforzar autoridad, beneficio y prueba de valor.</td></tr>
+            <tr><td>Eventos / Cierre</td><td><strong>Cierre campana Intake - LATAM - Fall 2025</strong></td><td>0</td><td>9</td><td>N/A</td><td>0</td><td>USD 0.00</td><td>N/A</td><td>Sin volumen relevante en el periodo. Mantener fuera de decisiones de optimizacion.</td></tr>
+            <tr><td>General</td><td><strong>Generacion de contactos - InMail - USA - Junio - 2025</strong></td><td>0</td><td>0</td><td>N/A</td><td>0</td><td>USD 0.00</td><td>N/A</td><td>Sin volumen en el periodo. No aporta lectura de respuesta para este corte.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title"><span class="bar-label-deco"></span><h2>Cala Summer26</h2></div>
+      <div class="grid two">
+        <div class="panel">
+          <h3>Lectura comparativa</h3>
+          <div class="claim">
+            <p><strong>Cala es parte central del analisis general de LinkedIn.</strong> Al incorporarla, cambia la lectura del angulo A6: oportunidad/acceso puede ser el mejor motor cuando se expresa como beca concreta y beneficio financiero.</p>
+          </div>
+          <ul class="insights">
+            <li><strong>Total Cala LinkedIn:</strong> 81,536 envios, 35,042 aperturas, 150 leads, USD 3,472.18 invertidos y USD 23.15 de CPL.</li>
+            <li><strong>Mejor pais:</strong> Peru, con 77 leads y USD 11.66 de CPL. Es el benchmark de eficiencia para becas.</li>
+            <li><strong>Mejor mensaje:</strong> lanzamiento de becas, con 74 leads y USD 14.25 de CPL. La oportunidad clara supera a la urgencia de cierre.</li>
+            <li><strong>Aprendizaje:</strong> en Cala, A6 no funciono como "deadline" sino como acceso real: beca + financiacion + posibilidad concreta de estudiar.</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>Ranking de mensajes Cala</h3>
+          <div class="bar-row"><div class="bar-label">A6 Lanzamiento beca</div><div class="bar-track"><span style="width:100%"></span></div><div class="bar-value">74 leads</div></div>
+          <div class="bar-row"><div class="bar-label">A6 Financiacion/acceso</div><div class="bar-track"><span style="width:62%"></span></div><div class="bar-value">46 leads</div></div>
+          <div class="bar-row"><div class="bar-label">A1/A5 Mejora laboral + prueba social</div><div class="bar-track"><span style="width:22%"></span></div><div class="bar-value">16 leads</div></div>
+          <div class="bar-row"><div class="bar-label">A6 Urgencia/cierre</div><div class="bar-track"><span style="width:19%"></span></div><div class="bar-value">14 leads</div></div>
+          <p class="small" style="margin-top:14px">Lectura: para becas, el mensaje inicial de acceso y financiacion convierte mucho mejor que la urgencia final.</p>
+        </div>
+      </div>
+      <div class="table-wrap" style="margin-top:14px">
+        <table>
+          <thead>
+            <tr><th>Campana Cala</th><th>Envios</th><th>Aperturas</th><th>Open rate</th><th>Leads</th><th>Costo</th><th>CPL</th><th>Lectura</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Becas Cala - Peru Summer26</strong></td><td>28,098</td><td>11,583</td><td>41.2%</td><td>77</td><td>USD 897.95</td><td>USD 11.66</td><td>Benchmark principal. Escalar aprendizajes de Peru a becas nuevas.</td></tr>
+            <tr><td><strong>Becas Cala - Colombia Summer26</strong></td><td>27,374</td><td>11,749</td><td>42.9%</td><td>33</td><td>USD 1,153.91</td><td>USD 34.97</td><td>Buen volumen, pero CPL medio. Revisar calidad de audiencia/copy.</td></tr>
+            <tr><td><strong>Becas Cala - MX Summer26</strong></td><td>15,040</td><td>6,832</td><td>45.4%</td><td>20</td><td>USD 850.56</td><td>USD 42.53</td><td>Abre bien, convierte menos. Optimizar formulario o propuesta de valor.</td></tr>
+            <tr><td><strong>Becas Cala - USA Summer26</strong></td><td>11,024</td><td>4,878</td><td>44.3%</td><td>20</td><td>USD 569.76</td><td>USD 28.49</td><td>Menor volumen, eficiencia aceptable. Conviene reforzar prueba de valor.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-wrap" style="margin-top:14px">
+        <table>
+          <thead>
+            <tr><th>Subangulo Cala</th><th>Angulo marco</th><th>Envios</th><th>Aperturas</th><th>Open rate</th><th>Leads</th><th>Costo</th><th>CPL</th><th>Decision sugerida</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Lanzamiento: 10 becas MBA</strong></td><td>A6 Oportunidad/acceso</td><td>26,851</td><td>11,296</td><td>42.1%</td><td>74</td><td>USD 1,054.76</td><td>USD 14.25</td><td>Replicar en Global Ambassadors con beca + pasos claros + beneficio profesional.</td></tr>
+            <tr><td><strong>Financiacion sin intereses</strong></td><td>A6 Oportunidad/acceso</td><td>22,336</td><td>9,801</td><td>43.9%</td><td>46</td><td>USD 872.21</td><td>USD 18.96</td><td>Mantener como segunda mejor ruta para reducir barrera economica.</td></tr>
+            <tr><td><strong>Mejora laboral + prueba social/datos</strong></td><td>A1/A5</td><td>19,926</td><td>8,808</td><td>44.2%</td><td>16</td><td>USD 718.52</td><td>USD 44.91</td><td>Reescribir con outcomes mas concretos; abre bien pero convierte menos.</td></tr>
+            <tr><td><strong>Urgencia: quedan pocos dias</strong></td><td>A6 Momento/deadline</td><td>11,467</td><td>5,137</td><td>44.8%</td><td>14</td><td>USD 826.67</td><td>USD 59.05</td><td>No usar urgencia sola como motor; reservarla para cierre y retargeting.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title"><span class="bar-label-deco"></span><h2>Mapa de angulos</h2></div>
+      <div class="grid three">
+        <div class="card angle-card"><span class="num">01</span><strong>Ascenso profesional y reposicionamiento</strong><p>Promesa de crecimiento, cambio de nivel, mejora salarial o salto hacia roles de mayor responsabilidad.</p></div>
+        <div class="card angle-card"><span class="num">02</span><strong>Liderazgo global y proyeccion internacional</strong><p>Construye aspiracion: liderazgo, networking, vision global, Miami y perfil competitivo internacional.</p></div>
+        <div class="card angle-card"><span class="num">03</span><strong>Dominio de datos, tecnologia y decisiones</strong><p>Territorio racional para STEM: analitica, tecnologia aplicada, toma de decisiones y empleabilidad futura.</p></div>
+        <div class="card angle-card"><span class="num">04</span><strong>Perfil hibrido y competitividad futura</strong><p>Refuerza la combinacion negocio + tecnologia + liderazgo. Bueno para diferenciar programas frente a MBAs tradicionales.</p></div>
+        <div class="card angle-card"><span class="num">05</span><strong>Credibilidad, respaldo y prueba social</strong><p>Reduce riesgo percibido: testimonios, egresados, embajadores, trayectoria institucional y validacion externa.</p></div>
+        <div class="card angle-card"><span class="num">06</span><strong>Oportunidad de acceso y momento</strong><p>Activa accion: becas, cupos, fechas limite, invitaciones y ventanas concretas para tomar decision.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title"><span class="bar-label-deco"></span><h2>Grupo x angulo</h2></div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Grupo</th><th>Angulo</th><th>Ads</th><th>Envios</th><th>Aperturas</th><th>Open rate</th><th>Leads</th><th>CPL</th><th>Decision sugerida</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Eventos / Cierre</td><td><strong>A3 Datos, tecnologia y decisiones</strong></td><td>2</td><td>1,960</td><td>923</td><td>47.1%</td><td>17</td><td>USD 4.97</td><td>Escalar en Masterclass, Keynote e InfoSessions con temas de alto valor.</td></tr>
+            <tr><td>General</td><td><strong>A2 Liderazgo global</strong></td><td>3</td><td>16,413</td><td>7,857</td><td>47.9%</td><td>20</td><td>USD 20.82</td><td>Mantener como angulo base para MBA y campanas generales.</td></tr>
+            <tr><td>General</td><td><strong>A4 Perfil hibrido</strong></td><td>4</td><td>8,400</td><td>4,067</td><td>48.4%</td><td>23</td><td>USD 29.42</td><td>Escalar en STEM y programas con mezcla negocio + tecnologia.</td></tr>
+            <tr><td>General</td><td><strong>A1 Ascenso profesional</strong></td><td>6</td><td>14,603</td><td>6,852</td><td>46.9%</td><td>12</td><td>USD 34.76</td><td>Optimizar copy hacia outcomes concretos: cargo, salario, movilidad.</td></tr>
+            <tr><td>General</td><td><strong>A6 Oportunidad y momento</strong></td><td>3</td><td>4,688</td><td>2,090</td><td>44.6%</td><td>4</td><td>USD 37.79</td><td>Usar solo con deadlines reales o becas; combinar con A2/A4.</td></tr>
+            <tr><td>General</td><td><strong>A5 Prueba social</strong></td><td>3</td><td>3,295</td><td>1,459</td><td>44.3%</td><td>3</td><td>USD 41.04</td><td>Usar como soporte, no como motor principal.</td></tr>
+            <tr><td>General</td><td><strong>A3 Datos, tecnologia y decisiones</strong></td><td>3</td><td>8,448</td><td>4,084</td><td>48.3%</td><td>13</td><td>USD 54.02</td><td>Revisar copy/formulario: abre bien, pero CPL sube frente a Masterclass.</td></tr>
+            <tr><td>Global Ambassadors</td><td><strong>A2 Liderazgo global</strong></td><td>8</td><td>1,041</td><td>484</td><td>46.5%</td><td>0</td><td>N/A</td><td>No evaluar todavia por leads; necesita mas volumen.</td></tr>
+            <tr><td>Global Ambassadors</td><td><strong>A6 Oportunidad y momento</strong></td><td>4</td><td>446</td><td>196</td><td>43.9%</td><td>0</td><td>N/A</td><td>Complementar beca con outcome profesional.</td></tr>
+            <tr><td>Global Ambassadors</td><td><strong>A5 Prueba social</strong></td><td>4</td><td>467</td><td>196</td><td>42.0%</td><td>0</td><td>N/A</td><td>Probar testimonial mas directo y beneficio de carrera.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title"><span class="bar-label-deco"></span><h2>Analisis por grupo</h2></div>
+      <div class="grid three">
+        <div class="card group-card general">
+          <span class="pill dark">General Â· 22 ads</span>
+          <h3>Campanas generales</h3>
+          <p>Es el grupo con mayor escala y resultado: 55,847 envios, 26,409 aperturas, 75 leads y USD 33.15 de CPL. Contiene los seis angulos y permite comparar respuesta real por motivacion.</p>
+          <ul class="insights">
+            <li><strong>Fortaleza:</strong> liderazgo global aporta 20 leads con USD 20.82 de CPL dentro del grupo General.</li>
+            <li><strong>Riesgo:</strong> datos/tecnologia abre bien, pero en General tiene CPL mas alto que en Masterclass.</li>
+            <li><strong>Siguiente prueba:</strong> mantener A2/A4 como base y optimizar A3 para bajar CPL sin perder volumen.</li>
+          </ul>
+        </div>
+        <div class="card group-card global">
+          <span class="pill dark">Global Ambassadors Â· 16 ads</span>
+          <h3>Becas Global Ambassadors</h3>
+          <p>Es una linea con volumen bajo: 1,954 envios, 876 aperturas, 0 leads y USD 87.51 de gasto. La lectura de performance aun no es concluyente.</p>
+          <ul class="insights">
+            <li><strong>Fortaleza:</strong> apertura inicial de 44.8%, aceptable para fase temprana.</li>
+            <li><strong>Riesgo:</strong> los angulos actuales son A2, A5 y A6; falta A1/A4 para conectar beca con transformacion profesional.</li>
+            <li><strong>Siguiente prueba:</strong> esperar mas volumen antes de recortar, pero crear variantes de ascenso y perfil hibrido.</li>
+          </ul>
+        </div>
+        <div class="card group-card events">
+          <span class="pill dark">Eventos / Cierre Â· 4 ads</span>
+          <h3>Masterclass e Intake</h3>
+          <p>Es el grupo mas eficiente por CPL: 1,960 envios, 932 aperturas, 17 leads y USD 4.97 de CPL. El resultado viene principalmente de Masterclass 11 Junio con A3.</p>
+          <ul class="insights">
+            <li><strong>Fortaleza:</strong> A3 convierte muy bien cuando el evento ofrece contenido experto y aplicable.</li>
+            <li><strong>Riesgo:</strong> oportunidad/cierre no registra leads en este corte.</li>
+            <li><strong>Siguiente prueba:</strong> para Keynote, InfoSessions y eventos STEM, mezclar A3 con prueba social del speaker.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid two">
+      <div>
+        <div class="section-title"><span class="bar-label-deco"></span><h2>Performance por grupo</h2></div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Grupo</th><th>Campanas</th><th>Ads</th><th>Envios</th><th>Aperturas</th><th>Open rate</th><th>Leads</th><th>Costo</th><th>CPL</th><th>Lectura</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>General</strong></td><td>4</td><td>22</td><td>55,847</td><td>26,409</td><td>47.3%</td><td>75</td><td>USD 2,486.52</td><td>USD 33.15</td><td>Mayor escala y mayor volumen. A2 y A4 destacan; A3 aporta volumen con CPL mas alto.</td></tr>
+              <tr><td><strong>Eventos / Cierre</strong></td><td>2</td><td>4</td><td>1,960</td><td>932</td><td>47.6%</td><td>17</td><td>USD 84.49</td><td>USD 4.97</td><td>Mejor eficiencia. Masterclass con A3 explica el resultado.</td></tr>
+              <tr><td><strong>Global Ambassadors</strong></td><td>4</td><td>16</td><td>1,954</td><td>876</td><td>44.8%</td><td>0</td><td>USD 87.51</td><td>N/A</td><td>Volumen bajo sin leads. No recortar aun; necesita mas volumen y nuevos angulos A1/A4.</td></tr>
+              <tr><td><strong>Total abril-junio</strong></td><td>10</td><td>42</td><td>59,761</td><td>28,217</td><td>47.2%</td><td>92</td><td>USD 2,658.52</td><td>USD 28.90</td><td>El aprendizaje principal esta en respuesta por angulo, no solo por campana.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <div class="section-title"><span class="bar-label-deco"></span><h2>Uso del benchmark Cala</h2></div>
+        <div class="panel">
+          <h3>Aprendizaje para becas y STEM</h3>
+          <p>Cala ya queda incorporada como benchmark historico. Su mejor lectura es que el acceso economico funciona cuando esta conectado a una promesa clara: beca concreta, financiacion y camino de aplicacion simple.</p>
+          <div>
+            <span class="pill">Becas Cala Colombia</span>
+            <span class="pill">Becas Cala Peru</span>
+            <span class="pill">Becas Cala MX</span>
+            <span class="pill">Becas Cala USA</span>
+            <span class="pill">Campana Cala STEM</span>
+          </div>
+          <ul class="insights">
+            <li><strong>Lectura:</strong> Cala prueba que A6 puede ser ganador si se formula como acceso real, no como urgencia generica.</li>
+            <li><strong>Uso recomendado:</strong> Global Ambassadors debe tomar la estructura ganadora de Cala, pero sumar liderazgo global y respaldo de embajadores.</li>
+            <li><strong>Para STEM:</strong> combinar beca/acceso con datos, tecnologia y competitividad futura para no depender solo del incentivo economico.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title"><span class="bar-label-deco"></span><h2>Campanas revisadas</h2></div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Grupo</th><th>Campana</th><th>Anuncios</th><th>Lectura de angulo</th><th>Recomendacion</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>General</td><td>Generacion de contactos - InMail - USA - Junio - 2025</td><td>4</td><td>Ascenso, liderazgo, perfil hibrido y prueba social.</td><td>Usar como base balanceada para MBA; sumar una variante de momento si hay deadline.</td></tr>
+            <tr><td>General</td><td>Campana General</td><td>6</td><td>Fuerte en datos/tecnologia y perfil hibrido.</td><td>Buen territorio para STEM; conectar cada mensaje con outcome profesional concreto.</td></tr>
+            <tr><td>General</td><td>Campana general - Mexico</td><td>5</td><td>Mezcla de ascenso, oportunidad, datos y liderazgo.</td><td>Mantener balance; medir si oportunidad convierte mejor que aspiracion.</td></tr>
+            <tr><td>General</td><td>Campana general - Peru</td><td>7</td><td>Mas carga de ascenso y prueba social.</td><td>Refuerza confianza y carrera; probar una version mas tecnologica para diversificar.</td></tr>
+            <tr><td>Cala</td><td>Becas Cala - Peru Summer26</td><td>4</td><td>A6 acceso/beca domina: 77 leads y USD 11.66 CPL.</td><td>Benchmark principal para nuevas becas; replicar lanzamiento + financiacion.</td></tr>
+            <tr><td>Cala</td><td>Becas Cala - Colombia Summer26</td><td>4</td><td>A6 genera volumen, pero CPL medio: 33 leads y USD 34.97 CPL.</td><td>Optimizar audiencia/copy manteniendo estructura de acceso.</td></tr>
+            <tr><td>Cala</td><td>Becas Cala - MX Summer26</td><td>4</td><td>Buen open rate, menor conversion: 20 leads y USD 42.53 CPL.</td><td>Revisar friccion de formulario y claridad de beneficio.</td></tr>
+            <tr><td>Cala</td><td>Becas Cala - USA Summer26</td><td>4</td><td>Menor volumen, eficiencia aceptable: 20 leads y USD 28.49 CPL.</td><td>Reforzar prueba de valor y autoridad institucional.</td></tr>
+            <tr><td>Global Ambassadors</td><td>Becas Global Ambassadors - Colombia Summer26</td><td>4</td><td>Liderazgo global, prueba social y momento.</td><td>Agregar una variante de ascenso para conectar la beca con movilidad profesional.</td></tr>
+            <tr><td>Global Ambassadors</td><td>Becas Global Ambassadors - USA Summer26</td><td>4</td><td>Liderazgo y oportunidad.</td><td>Subir credibilidad institucional y alumni para compensar posible friccion de decision.</td></tr>
+            <tr><td>Global Ambassadors</td><td>Becas Global Ambassadors - MX Summer26</td><td>4</td><td>Liderazgo y prueba social.</td><td>Mantener aspiracional, pero aterrizar beneficios concretos de programa.</td></tr>
+            <tr><td>Global Ambassadors</td><td>Becas Global Ambassadors - Peru Summer26</td><td>4</td><td>Liderazgo, prueba social y momento.</td><td>Probar urgencia suave: fecha, cupos y proceso de aplicacion.</td></tr>
+            <tr><td>Eventos / Cierre</td><td>Cierre campana Intake - LATAM - Fall 2025</td><td>2</td><td>Oportunidad de acceso y momento.</td><td>Correcto para cierre; sumar prueba social en futuras ventanas de intake.</td></tr>
+            <tr><td>Eventos / Cierre</td><td>Masterclass 11 Junio</td><td>2</td><td>Dominio de datos, tecnologia y decisiones.</td><td>Alinear con STEM/analytics y usar el evento como prueba de expertise.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title"><span class="bar-label-deco"></span><h2>Acciones recomendadas</h2></div>
+      <div class="grid three">
+        <div class="card angle-card">
+          <span class="num">01</span>
+          <strong>Escalar A3 en eventos y STEM</strong>
+          <p>Datos/tecnologia genera 30 leads y el mejor lead rate. Usarlo como angulo principal en Masterclass, Keynote, InfoSessions y piezas STEM con temas de aplicacion profesional.</p>
+        </div>
+        <div class="card angle-card">
+          <span class="num">02</span>
+          <strong>Mantener A4 como diferenciador</strong>
+          <p>Perfil hibrido produce 23 leads y la mayor tasa de apertura: 48.4%. Conviene convertirlo en linea creativa estable para negocio + tecnologia + competitividad futura.</p>
+        </div>
+        <div class="card angle-card">
+          <span class="num">03</span>
+          <strong>Usar A2 como base general</strong>
+          <p>Liderazgo global es el CPL mas bajo entre angulos con leads: USD 23.14. En campanas generales debe mantenerse como linea fuerte, con menos dependencia en Global Ambassadors hasta que tenga mas volumen.</p>
+        </div>
+        <div class="card angle-card">
+          <span class="num">04</span>
+          <strong>Optimizar A1 con outcomes</strong>
+          <p>Ascenso profesional tiene escala, pero bajo lead rate. Reescribirlo alrededor de cargo, salario, movilidad y decisiones de carrera, no solo aspiracion.</p>
+        </div>
+        <div class="card angle-card">
+          <span class="num">05</span>
+          <strong>No depender de A5/A6 como motores</strong>
+          <p>Prueba social y oportunidad tienen los CPL mas altos del corte. Funcionan mejor como soporte de confianza y urgencia, combinados con A2, A3 o A4.</p>
+        </div>
+        <div class="card angle-card">
+          <span class="num">06</span>
+          <strong>Dar tiempo a Global Ambassadors</strong>
+          <p>El set nuevo suma solo 1,954 envios y 0 leads. No recortar todavia; monitorear cuando alcance mas volumen y sumar variantes A1/A4 para mejorar respuesta.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="claim">
+        <p><strong>Conclusion:</strong> con Cala incluido, el mejor angulo general es A6 cuando se formula como acceso economico claro: beca o financiacion. En las demas lineas, A3 y A4 lideran por volumen/lead rate, y A2 por CPL en campanas generales. La urgencia sola y la prueba social aislada siguen siendo soportes, no motores principales.</p>
+      </div>
+      <p class="small" style="margin-top:12px">Base de lectura: informacion de LinkedIn del 1 de abril al 2 de junio de 2026, organizada por campana, mensaje y angulo de venta.</p>
+    </section>
+  </main>
+</body>
+</html>
+
