@@ -121,3 +121,154 @@ body:has(header) .header-logo {
   color: var(--negro);
   transform: translateY(-1px);
 }
+
+.pdf-download {
+  position: fixed;
+  right: 16px;
+  bottom: 18px;
+  z-index: 9999;
+  background: var(--negro);
+  color: var(--amarillo);
+  font-family: var(--font-body);
+  font-size: .74rem;
+  font-weight: 700;
+  padding: 10px 16px;
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 10px 24px rgba(1, 22, 64, .18);
+}
+
+.pdf-download:hover {
+  background: var(--amarillo);
+  color: var(--negro);
+}
+
+@page {
+  size: Letter;
+  margin: 10mm;
+}
+
+@media print {
+  html,
+  body {
+    width: auto !important;
+    min-height: initial !important;
+    overflow: visible !important;
+    background: #fff !important;
+    color: var(--negro) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .hub-back,
+  .pdf-download,
+  .tools,
+  .sticky-nav,
+  .side-nav,
+  .nav,
+  .index-btn,
+  .index-toggle-btn,
+  .progress-card,
+  .progress {
+    display: none !important;
+  }
+
+  .wbs-brand-logo {
+    position: static !important;
+    width: 150px !important;
+    max-width: 150px !important;
+    margin: 0 0 14px !important;
+    padding: 6px 10px !important;
+    box-shadow: none !important;
+    break-after: avoid;
+  }
+
+  body:has(header) header,
+  header,
+  .hero,
+  .cover,
+  .slide-cover {
+    background: #fff !important;
+    color: var(--negro) !important;
+    padding: 0 0 14px !important;
+    min-height: initial !important;
+    height: auto !important;
+    box-shadow: none !important;
+    border-bottom: 2px solid var(--gris-borde);
+    break-after: avoid;
+  }
+
+  header::before,
+  .hero::before,
+  .cover::before,
+  .slide-cover::before {
+    display: none !important;
+  }
+
+  header h1,
+  .hero h1,
+  .hero h2,
+  .cover h1,
+  .slide-cover h1 {
+    color: var(--negro) !important;
+    font-size: 28pt !important;
+    line-height: 1 !important;
+    margin: 0 0 8px !important;
+    max-width: 100% !important;
+  }
+
+  header p,
+  .hero p,
+  .cover p,
+  .slide-cover p {
+    color: var(--gris-oscuro) !important;
+    font-size: 10pt !important;
+    max-width: 100% !important;
+  }
+
+  main,
+  .container,
+  .slide-inner {
+    max-width: none !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  section,
+  .panel,
+  .card,
+  .metric,
+  .table-wrap,
+  .kpi,
+  .stat-card,
+  .action,
+  .tl,
+  .timeline-item {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .panel,
+  .card,
+  .metric,
+  .table-wrap,
+  .kpi,
+  .stat-card,
+  .action,
+  .tl,
+  table {
+    box-shadow: none !important;
+  }
+
+  table {
+    font-size: 8.5pt !important;
+  }
+
+  th,
+  td {
+    padding: 6px 8px !important;
+  }
+}
