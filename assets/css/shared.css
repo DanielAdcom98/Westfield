@@ -162,6 +162,22 @@ body:has(header) .header-logo {
     print-color-adjust: exact;
   }
 
+  html body,
+  html body * {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-variant-ligatures: none !important;
+  }
+
+  html body h1,
+  html body h2,
+  html body h3,
+  html body h4,
+  html body h5,
+  html body h6,
+  html body .display-title {
+    font-family: Georgia, "Times New Roman", serif !important;
+  }
+
   .hub-back,
   .pdf-download,
   .tools,
