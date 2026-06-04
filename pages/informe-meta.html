@@ -229,7 +229,9 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-si
   .hub-back,.pdf-download,.filter-bar{display:none!important}
   body{background:var(--blanco)}
   .container{max-width:none;padding:18px}
-  .section,.strategic-section,.chart-box,.kpi,.conclusion-card,.ad-card{break-inside:avoid}
+  .section,.strategic-section{break-inside:auto;page-break-inside:auto}
+  .chart-box,.kpi,.conclusion-card,.ad-card{break-inside:avoid;page-break-inside:avoid}
+  .table-wrap{overflow:visible}
   .chart-box,.kpi,.conclusion-card,.ad-card,.table-wrap{box-shadow:none}
 }
 
@@ -5594,7 +5596,6 @@ function searchAds(q){
 </script>
 </body>
 </html>
-
 
 
 

@@ -246,23 +246,64 @@ body:has(header) .header-logo {
 
   main,
   .container,
+  #presentation-container,
+  .app,
   .slide-inner {
     max-width: none !important;
     width: 100% !important;
+    height: auto !important;
+    min-height: initial !important;
     padding: 0 !important;
     margin: 0 !important;
+    overflow: visible !important;
+  }
+
+  .slide {
+    position: relative !important;
+    inset: auto !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: initial !important;
+    padding: 0 0 14px !important;
+    overflow: visible !important;
+    break-after: page;
+    page-break-after: always;
+  }
+
+  .slide:last-of-type {
+    break-after: auto;
+    page-break-after: auto;
+  }
+
+  .table-wrap,
+  .table-scroll,
+  .scroll,
+  table {
+    max-width: 100% !important;
+    overflow: visible !important;
   }
 
   section,
-  .panel,
+  .strategic-section {
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+  }
+
   .card,
   .metric,
-  .table-wrap,
   .kpi,
   .stat-card,
   .action,
   .tl,
-  .timeline-item {
+  .timeline-item,
+  .chart-box,
+  .conclusion-card,
+  .strategic-card,
+  .insight-card,
+  .method-card,
+  .check-item,
+  tr {
     break-inside: avoid;
     page-break-inside: avoid;
   }
