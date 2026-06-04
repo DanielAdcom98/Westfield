@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Westfield · Informe LinkedIn Leads B2C</title>
+  <title>Westfield - Informe LinkedIn Leads B2C</title>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/shared.css">
   <style>
@@ -214,6 +214,36 @@
     }
     .pdf-download:hover { opacity: .9; }
 
+    .stem-section {
+      margin-top: 44px;
+      padding: 24px 0 2px;
+      border-top: 4px solid var(--amarillo);
+      background: linear-gradient(180deg, rgba(255,192,0,.10), rgba(255,255,255,0) 150px);
+    }
+    .stem-section .section-title { margin-top: 0; }
+    .stem-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 16px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--negro);
+      color: var(--amarillo);
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .stem-note {
+      background: var(--negro) !important;
+      color: var(--blanco);
+      border-left: 4px solid var(--amarillo) !important;
+    }
+    .stem-note h2 { color: var(--amarillo); }
+    .stem-note .insights li { color: rgba(255,255,255,.84); }
+    .stem-note strong { color: var(--amarillo); }
+
     /* ── Responsive ── */
     @media (max-width: 980px) {
       main, header { padding-left: 18px; padding-right: 18px; }
@@ -242,7 +272,8 @@ h1,h2,.hero h1,.slide-cover h1,.cover h1{font-family:var(--font-title)!important
 .card,.stat-card,.panel,.metric,.kpi,.chart-box,.conclusion-card,.strategic-card,.insight-card,.timeline-item,.tl,.action,.mini-kpi,.table-wrap,.mix-panel-container,.panels{background:rgba(255,255,255,.94)!important}
 .num,.badge,.panel-header-badge,.period-badge,.filter.active,.index-btn,.index-toggle-btn{background:var(--negro)!important;color:var(--amarillo)!important;border-color:var(--negro)!important}
 .val,.stat-val,.metric-value,.kpi-val{color:var(--negro)!important;font-family:var(--font-body)!important}
-.metric:first-child .metric-value,.kpi.accent .kpi-val,.claim strong,.claim-box strong,tfoot tr,.mix-tab.active .pct{color:var(--amarillo)!important}
+.metric:first-child .metric-value,.metric:first-child .value,.kpi.accent .kpi-val,.claim strong,.claim-box strong,tfoot tr,.mix-tab.active .pct{color:var(--amarillo)!important}
+.metric:first-child .label{color:rgba(255,255,255,.72)!important}
 th{background:var(--negro)!important;color:var(--blanco)!important;font-family:var(--font-body)!important}
 .progress,.progress-bar,.bar-fill.yellow,.bar span,.metric::after,.kpi::after,.card::after{background:var(--amarillo)!important}
 .nav-btn,.nav button,.tools button,.filter,.tab,.mix-tab{font-family:var(--font-body)!important;border-radius:999px!important}
@@ -260,7 +291,7 @@ th{background:var(--negro)!important;color:var(--blanco)!important;font-family:v
 <button class="pdf-download" type="button" onclick="window.print()">Descargar PDF</button>
 
 <header>
-  <div class="header-tag">LinkedIn Leads B2C · Summer 2026</div>
+  <div class="header-tag">LinkedIn Leads B2C - Summer 2026</div>
   <h1>Informe general de perfiles B2C</h1>
   <p>Lectura agregada de leads B2C. El foco está en la calidad profesional de la audiencia: cargos, seniority, función, empresa, industria, país, formación e intención declarada.</p>
 </header>
@@ -279,23 +310,23 @@ th{background:var(--negro)!important;color:var(--blanco)!important;font-family:v
   <section id="resumen">
     <div class="grid cards" style="margin-bottom:16px">
       <div class="card metric">
-        <div class="value">408</div>
-        <div class="label">Leads B2C analizados</div>
+        <div class="value">104</div>
+        <div class="label">Leads reportados LinkedIn Ads</div>
       </div>
       <div class="card metric">
-        <div class="value">408</div>
-        <div class="label">Emails únicos</div>
+        <div class="value">68,548</div>
+        <div class="label">Envios Sponsored Messaging</div>
       </div>
       <div class="card metric">
-        <div class="value">202</div>
-        <div class="label">Perfiles gerenciales / directivos</div>
+        <div class="value">32,443</div>
+        <div class="label">Aperturas</div>
       </div>
       <div class="card metric">
-        <div class="value">144</div>
-        <div class="label">Empresas declaradas o inferidas</div>
+        <div class="value" style="font-size:1.55rem">USD 2,902.29</div>
+        <div class="label">Inversion reportada</div>
       </div>
       <div class="card metric">
-        <div class="value" style="font-size:1.2rem;line-height:1.4">2026-02-27<br><span style="font-size:.88rem;color:var(--gris-medio)">a 2026-05-19</span></div>
+        <div class="value" style="font-size:1.2rem;line-height:1.4">Intake Summer:26<br><span style="font-size:.88rem;color:var(--gris-medio)">2026-03-21 a 2026-06-03</span></div>
         <div class="label">Rango de fechas</div>
       </div>
     </div>
@@ -304,23 +335,78 @@ th{background:var(--negro)!important;color:var(--blanco)!important;font-family:v
       <div class="card highlight">
         <h2>Hallazgo principal</h2>
         <ul class="insights">
-          <li>La base tiene una composición profesional fuerte: <strong>202</strong> leads están en gerencia, dirección, VP, C-Level o presidencia.</li>
-          <li>Al ampliar a coordinación, supervisión y especialistas, hay <strong>293</strong> perfiles con señales claras de trayectoria profesional.</li>
-          <li>El campo Cargo es especialmente sólido: <strong>99.5%</strong> de completitud, suficiente para segmentar mensajes y priorizar seguimiento.</li>
+          <li>LinkedIn Ads reporta <strong>104 leads</strong> en el rango Intake Summer:26, con <strong>68,548 envios</strong> y <strong>32,443 aperturas</strong>.</li>
+          <li>La tasa de apertura del periodo fue <strong>47.3%</strong> y el CPL promedio fue <strong>USD 27.91</strong>.</li>
+          <li>La lectura de perfil profesional se complementa con <strong>129</strong> respuestas reales descargadas desde leadFormResponses para las campanas General, Peru y Mexico.</li>
         </ul>
       </div>
       <div class="card ok">
         <h2>Lectura ejecutiva</h2>
         <ul class="insights">
-          <li>La información permite construir audiencias por madurez profesional, no solo por país o campaña.</li>
-          <li>Empresa e industria aportan una capa adicional: <strong>119</strong> leads tienen empresa declarada y <strong>134</strong> tienen industria.</li>
-          <li>El mejor corte comercial combina cargo + país + nivel educativo + presupuesto para priorizar contactos con mayor afinidad.</li>
+          <li>General concentra el mayor volumen: <strong>81</strong> leads, <strong>62,880</strong> envios y <strong>USD 32.71</strong> de CPL.</li>
+          <li>Eventos / Cierre aporto <strong>23</strong> leads con <strong>USD 4.48</strong> de CPL, una lectura eficiente pero de menor escala.</li>
+          <li>El mejor corte comercial sigue siendo combinar cargo + pais + nivel educativo + presupuesto cuando se trabaja sobre el export de leads.</li>
         </ul>
       </div>
     </div>
   </section>
 
   <!-- ── AUDIENCIA ──────────────────────────────────────────────────────── -->
+  <section>
+    <div class="section-title"><div class="bar-label-deco"><h3>Respuestas disponibles</h3></div><div class="line"></div></div>
+    <div class="grid cards" style="margin-bottom:16px">
+      <div class="card metric">
+        <div class="value">129</div>
+        <div class="label">Respuestas leadFormResponses</div>
+      </div>
+      <div class="card metric">
+        <div class="value">127</div>
+        <div class="label">Emails unicos</div>
+      </div>
+      <div class="card metric">
+        <div class="value">74</div>
+        <div class="label">Perfiles senior</div>
+      </div>
+      <div class="card metric">
+        <div class="value">61</div>
+        <div class="label">Con presupuesto</div>
+      </div>
+      <div class="card metric">
+        <div class="value">94</div>
+        <div class="label">Con bachelor/si</div>
+      </div>
+    </div>
+    <div class="grid two">
+      <div class="card highlight">
+        <h2>Lectura de formularios</h2>
+        <ul class="insights">
+          <li>Se descargaron <strong>129</strong> respuestas unicas del endpoint leadFormResponses dentro del rango Intake Summer:26.</li>
+          <li>Las respuestas se concentran en <strong>Campana General</strong> (68), <strong>Peru</strong> (46) y <strong>Mexico</strong> (15).</li>
+          <li>Hay <strong>74</strong> perfiles senior: gerencia/head, direccion/VP y C-Level/presidencia.</li>
+        </ul>
+      </div>
+      <div class="card ok">
+        <h2>Uso recomendado</h2>
+        <ul class="insights">
+          <li>Tomar adAnalytics como fuente de performance: envios, aperturas, costo y CPL.</li>
+          <li>Tomar leadFormResponses como fuente de calidad: cargo, experiencia, presupuesto, bachelor y datos declarados.</li>
+          <li>La diferencia entre <strong>104 leads</strong> de performance y <strong>129 respuestas</strong> se deja separada porque son endpoints distintos.</li>
+        </ul>
+      </div>
+    </div>
+    <table style="margin-top:16px">
+      <thead>
+        <tr><th>Campana con respuestas</th><th>Respuestas</th><th>Lectura de perfil</th><th>Presupuesto</th><th>Bachelor / titulo</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Campana General</td><td>68</td><td>43 senior / directivos</td><td>Sin dato en este formulario</td><td>45 con si / yes</td></tr>
+        <tr><td>Campana general - Peru</td><td>46</td><td>25 senior / directivos</td><td>46 con presupuesto</td><td>40 con si</td></tr>
+        <tr><td>Campana general - Mexico</td><td>15</td><td>5 senior / directivos</td><td>15 con presupuesto</td><td>9 con si</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+
   <div class="section-title"><div class="bar-label-deco"><h3>Audiencia</h3></div><div class="line"></div></div>
 
   <section id="audiencia">
@@ -550,9 +636,82 @@ th{background:var(--negro)!important;color:var(--blanco)!important;font-family:v
       <li>Construir una ruta de seguimiento por nivel profesional: asesoría consultiva para directivos, nutrición de valor para mandos medios y orientación de plan de carrera para perfiles operativos.</li>
       <li>Usar la lectura de país para adaptar la promesa: financiamiento y flexibilidad en mercados de alto volumen, autoridad institucional y red internacional en mercados de mayor ticket potencial.</li>
     </ul>
-    <p class="small" style="margin-top:14px">Archivo fuente: leads_unificados.csv · Rango: 2026-02-27 a 2026-05-19</p>
+    <p class="small" style="margin-top:14px">Fuente actual: LinkedIn Ads API / adAnalytics + leadFormResponses, cuenta 511871037 - Intake Summer:26 - Rango: 2026-03-21 a 2026-06-03. Archivos locales: reports/westfield/linkedin_lead_form_responses_considered_20260604.csv y reports/westfield/linkedin_stem_lead_form_responses_20260604.csv.</p>
   </section>
 
+
+  <section class="stem-section" id="stem-formularios">
+    <div class="stem-kicker">Anexo STEM - leadFormResponses</div>
+    <div class="section-title"><div class="bar-label-deco"><h3>STEM formularios</h3></div><div class="line"></div></div>
+    <div class="grid cards" style="margin-bottom:16px">
+      <div class="card metric">
+        <div class="value">26</div>
+        <div class="label">Respuestas STEM</div>
+      </div>
+      <div class="card metric">
+        <div class="value">25</div>
+        <div class="label">Emails unicos</div>
+      </div>
+      <div class="card metric">
+        <div class="value">22</div>
+        <div class="label">Sesiones informativas</div>
+      </div>
+      <div class="card metric">
+        <div class="value">18</div>
+        <div class="label">Con bachelor / si</div>
+      </div>
+      <div class="card metric">
+        <div class="value">8</div>
+        <div class="label">Perfiles senior</div>
+      </div>
+    </div>
+    <div class="grid two">
+      <div class="card highlight">
+        <h2>Lectura STEM</h2>
+        <ul class="insights">
+          <li>Se descargaron <strong>26</strong> respuestas de formularios STEM desde leadFormResponses en el rango Intake Summer:26.</li>
+          <li><strong>Sesiones informativas</strong> concentra la mayor parte del volumen: 22 de 26 respuestas.</li>
+          <li>La base muestra una senal academica util: <strong>22</strong> respuestas tienen nivel de estudio y <strong>18</strong> declaran bachelor / titulo universitario.</li>
+        </ul>
+      </div>
+      <div class="card stem-note">
+        <h2>Calidad comercial STEM</h2>
+        <ul class="insights">
+          <li>Hay <strong>8</strong> perfiles senior: gerencia/head o direccion/VP.</li>
+          <li>El presupuesto aparece poco informado: solo <strong>2</strong> respuestas tienen rango de presupuesto.</li>
+          <li>Recomendacion: reforzar captura de presupuesto y programa de interes en formularios STEM para mejorar priorizacion comercial.</li>
+        </ul>
+      </div>
+    </div>
+    <table style="margin-top:16px">
+      <thead>
+        <tr><th>Campana STEM</th><th>Respuestas</th><th>Seniority principal</th><th>Nivel de estudio</th><th>Lectura</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Sesiones informativas</td><td>22</td><td>5 gerencia/head - 2 direccion/VP</td><td>12 universitario - 5 especializacion - 4 maestria - 1 doctorado</td><td>Mayor volumen; buena senal academica, pero falta presupuesto.</td></tr>
+        <tr><td>Campana Cala STEM</td><td>2</td><td>1 gerencia/head - 1 perfil profesional</td><td>Sin dato</td><td>Muestra perfiles laborales, pero volumen todavia bajo para conclusion.</td></tr>
+        <tr><td>InfoSessions Abril</td><td>2</td><td>1 perfil profesional - 1 sin cargo</td><td>Sin dato</td><td>Volumen bajo; requiere consolidarse con otros eventos STEM.</td></tr>
+      </tbody>
+    </table>
+    <div class="grid two" style="margin-top:16px">
+      <div class="card">
+        <h2>Audiencia STEM</h2>
+        <ul class="insights">
+          <li>La audiencia tiene una mezcla de perfiles tecnicos, profesionales funcionales y mandos medios; el grupo mas amplio queda en <strong>otros perfiles profesionales</strong> con 14 respuestas.</li>
+          <li>La senal senior aparece en <strong>8</strong> respuestas: 6 de gerencia/head y 2 de direccion/VP, suficiente para seguimiento consultivo pero todavia no para segmentacion fina.</li>
+          <li>En educacion, el peso principal es <strong>universitario</strong> con 12 respuestas, seguido por especializacion (5), maestria (4) y doctorado (1).</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Recomendaciones STEM</h2>
+        <ul class="insights">
+          <li>Separar seguimiento entre perfiles senior y perfiles exploratorios: senior con conversacion de ROI profesional; exploratorios con orientacion de programa, requisitos y financiacion.</li>
+          <li>Agregar campos obligatorios de <strong>presupuesto</strong> y <strong>programa de interes</strong> en los formularios STEM para reducir la friccion comercial posterior.</li>
+          <li>Usar Sesiones informativas como ruta principal de nutricion: concentra 85% de las respuestas STEM y permite convertir interes educativo en asesorias.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 </main>
 
 <script>
