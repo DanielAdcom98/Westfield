@@ -259,6 +259,59 @@
       font-size: .72rem;
       margin-top: 12px;
     }
+    .profile-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin: 16px 0;
+    }
+    .profile-card {
+      background: #FBFCFE;
+      border: 1px solid var(--gris-borde);
+      border-radius: var(--radius);
+      padding: 16px;
+    }
+    .profile-card h3 {
+      color: var(--negro);
+      font-size: .82rem;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .profile-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .profile-card li {
+      color: var(--gris-oscuro);
+      font-size: .78rem;
+      line-height: 1.45;
+      border-bottom: 1px solid var(--gris-borde);
+      padding-bottom: 8px;
+    }
+    .profile-card li:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+    .profile-card strong {
+      color: var(--negro);
+      display: block;
+      font-size: .86rem;
+      margin-bottom: 2px;
+    }
+    .profile-note {
+      background: #FFF8E8;
+      border: 1px solid #F2D399;
+      border-left: 5px solid var(--amarillo);
+      border-radius: var(--radius);
+      color: var(--gris-oscuro);
+      font-size: .82rem;
+      padding: 12px 14px;
+      margin-top: 14px;
+    }
     @media (max-width: 1100px) {
       .summary-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -267,6 +320,9 @@
       }
       .grid-two {
         grid-template-columns: 1fr;
+      }
+      .profile-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
     @media (max-width: 700px) {
@@ -282,6 +338,9 @@
       }
       .panel {
         padding: 18px;
+      }
+      .profile-grid {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -403,7 +462,8 @@
       .callout,
       .notes,
       .section-lead,
-      .footer-note {
+      .footer-note,
+      .profile-note {
         font-size: 8pt !important;
       }
       .callout {
@@ -427,6 +487,32 @@
         font-size: 6.8pt !important;
         padding: 3px 8px !important;
         margin-bottom: 7px !important;
+      }
+      .profile-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 7px !important;
+        margin: 8px 0 !important;
+      }
+      .profile-card {
+        padding: 8px !important;
+        box-shadow: none !important;
+        break-inside: avoid;
+      }
+      .profile-card h3 {
+        font-size: 7pt !important;
+        margin-bottom: 5px !important;
+      }
+      .profile-card li {
+        font-size: 6.9pt !important;
+        padding-bottom: 4px !important;
+        gap: 0 !important;
+      }
+      .profile-card strong {
+        font-size: 7.4pt !important;
+      }
+      .profile-note {
+        padding: 7px 9px !important;
+        margin-top: 8px !important;
       }
       .section-lead {
         margin-bottom: 8px !important;
@@ -585,6 +671,75 @@
           </tbody>
         </table>
       </div>
+    </section>
+
+    <div class="section-title">
+      <span class="mark"></span>
+      <h2>Perfil de audiencia</h2>
+      <span class="line"></span>
+    </div>
+    <section class="panel">
+      <span class="badge">Personas, sectores, cargos y ubicacion</span>
+      <p class="section-lead">La lectura de perfil combina dos fuentes: el targeting real de las campanas B2B de LinkedIn y la lectura agregada de perfiles disponible en el informe de LinkedIn Leads. No suma leads adicionales al performance; ayuda a entender a quien se esta atrayendo y como priorizar seguimiento comercial.</p>
+
+      <div class="profile-grid">
+        <article class="profile-card">
+          <h3>Cargos y seniority</h3>
+          <ul>
+            <li><strong>Predominio directivo</strong> Las campanas priorizan seniorities altos: gerencia, direccion, VP, owner, partner y C-Level.</li>
+            <li><strong>74 perfiles senior</strong> En la lectura agregada de respuestas LinkedIn, 74 perfiles aparecen como gerencia/head, direccion/VP o C-Level/presidencia.</li>
+            <li><strong>Cargos frecuentes</strong> Gerente general, gerente, director, director de operaciones, CEO, presidente, socio/fundador, supervisor y key account manager.</li>
+          </ul>
+        </article>
+
+        <article class="profile-card">
+          <h3>Funciones profesionales</h3>
+          <ul>
+            <li><strong>Decisores de negocio</strong> La mayor afinidad aparece en direccion general, estrategia, gerencia y perfiles con poder de influencia interna.</li>
+            <li><strong>Comercial y operaciones</strong> Comercial/marketing y operaciones/logistica son funciones visibles dentro del universo de leads profesional.</li>
+            <li><strong>Talento humano</strong> General B2B apunta a una funcion profesional especifica, util para conversaciones corporativas sobre desarrollo de talento.</li>
+          </ul>
+        </article>
+
+        <article class="profile-card">
+          <h3>Ubicacion</h3>
+          <ul>
+            <li><strong>Mexico</strong> Evento Mexico esta concentrado en Ciudad de Mexico y fue el mayor aportante: 118 leads.</li>
+            <li><strong>Miami / Florida</strong> Lunch & Learn apunta a perfiles profesionales de 35 a 54 anos, con experiencia laboral y ubicacion en Florida.</li>
+            <li><strong>LATAM urbano</strong> General B2B usa ciudades clave de LATAM como Bogota, Mexico, Lima y Florida para sostener cobertura regional.</li>
+          </ul>
+        </article>
+
+        <article class="profile-card">
+          <h3>Sectores e industrias</h3>
+          <ul>
+            <li><strong>Servicios empresariales</strong> Consultoria y servicios a empresas aparece como sector recurrente en la lectura agregada.</li>
+            <li><strong>Software y tecnologia</strong> Desarrollo de software y perfiles digitales aparecen dentro de las industrias con mayor presencia.</li>
+            <li><strong>Publicidad y servicios</strong> Servicios de publicidad y funciones comerciales sugieren afinidad con perfiles de crecimiento, marketing y ventas.</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="grid-two">
+        <article class="profile-card">
+          <h3>Lectura comercial</h3>
+          <ul class="notes">
+            <li>El mejor prospecto B2B no es solo quien deja el lead, sino quien combina cargo senior, empresa identificable, ubicacion prioritaria y funcion relacionada con talento, negocio o transformacion.</li>
+            <li>Para perfiles directivos, el mensaje debe moverse hacia impacto organizacional, competitividad, liderazgo y networking ejecutivo.</li>
+            <li>Para mandos medios y especialistas, conviene hablar de movilidad profesional, capacidad de liderar equipos y transicion de experto funcional a lider de negocio.</li>
+          </ul>
+        </article>
+        <article class="profile-card">
+          <h3>Priorizacion sugerida</h3>
+          <ul class="notes">
+            <li><strong>Prioridad alta:</strong> directores, gerentes, owners, founders, HR decision makers y perfiles con empresa/sector identificable.</li>
+            <li><strong>Prioridad media:</strong> supervisores, coordinadores, especialistas y perfiles de operaciones/comercial con trayectoria clara.</li>
+            <li><strong>Seguimiento exploratorio:</strong> perfiles sin cargo, sin empresa o con informacion incompleta; deben entrar a nutricion antes de contacto comercial fuerte.</li>
+          </ul>
+        </article>
+      </div>
+
+      <p class="profile-note">Nota de alcance: el token actual de LinkedIn no permite descargar nuevas respuestas de leadFormResponses, por lo que esta seccion usa targeting de campana y la lectura agregada de perfiles ya disponible en el repo. Para una auditoria 100% por lead B2B, hace falta exportar o habilitar respuestas de formularios por campana.</p>
     </section>
 
     <div class="section-title">
