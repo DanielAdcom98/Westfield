@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Westfield - Informe B2B Eventos y General</title>
+  <link rel="stylesheet" href="../assets/css/shared.css">
+  <style>
+    body {
+      min-height: 100vh;
+      background: var(--gris-claro);
+      color: var(--negro);
+      font-family: var(--font-body);
+      line-height: 1.55;
+    }
+    .page {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 32px 28px 58px;
+    }
+    .hero {
+      background: var(--negro);
+      color: var(--blanco);
+      border-radius: var(--radius);
+      padding: 42px 48px 38px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 6px;
+      background: var(--amarillo);
+    }
+    .eyebrow {
+      color: var(--amarillo);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .hero h1 {
+      color: var(--blanco);
+      font-size: clamp(2rem, 4vw, 3.8rem);
+      line-height: .96;
+      max-width: 880px;
+      margin-bottom: 14px;
+    }
+    .hero p {
+      color: rgba(255,255,255,.78);
+      max-width: 900px;
+      font-size: .95rem;
+      font-weight: 300;
+    }
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(140px, 1fr));
+      gap: 14px;
+      margin: 22px 0 34px;
+      position: relative;
+      z-index: 2;
+    }
+    .metric {
+      background: rgba(255,255,255,.96);
+      border: 1px solid var(--gris-borde);
+      border-radius: var(--radius);
+      padding: 17px 16px;
+      box-shadow: var(--shadow-card);
+      min-height: 118px;
+      position: relative;
+      overflow: hidden;
+    }
+    .metric::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 4px;
+      background: var(--amarillo);
+    }
+    .metric.accent {
+      background: var(--negro);
+      border-color: var(--negro);
+    }
+    .metric.accent strong,
+    .metric.accent span {
+      color: var(--amarillo);
+    }
+    .metric.accent small {
+      color: rgba(255,255,255,.68);
+    }
+    .metric span {
+      display: block;
+      color: var(--gris-medio);
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .metric strong {
+      display: block;
+      color: var(--negro);
+      font-size: clamp(1.35rem, 2.2vw, 2rem);
+      line-height: 1;
+      margin-bottom: 7px;
+    }
+    .metric small {
+      display: block;
+      color: var(--gris-medio);
+      font-size: .72rem;
+      font-weight: 400;
+    }
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 34px 0 16px;
+    }
+    .section-title h2 {
+      color: var(--negro);
+      font-family: var(--font-title);
+      font-size: clamp(1.7rem, 3vw, 2.7rem);
+      line-height: 1;
+      margin: 0;
+    }
+    .section-title .mark {
+      width: 7px;
+      height: 34px;
+      background: var(--amarillo);
+      border-radius: 999px;
+      flex: 0 0 auto;
+    }
+    .section-title .line {
+      flex: 1;
+      height: 1px;
+      background: var(--gris-borde);
+    }
+    .grid-two {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+      gap: 18px;
+      margin-bottom: 30px;
+    }
+    .panel {
+      background: rgba(255,255,255,.96);
+      border: 1px solid var(--gris-borde);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow-card);
+    }
+    .panel h3 {
+      color: var(--negro);
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .callout {
+      border-left: 5px solid var(--amarillo);
+      background: #FFF8E8;
+      color: var(--gris-oscuro);
+      border-radius: 8px;
+      padding: 15px 16px;
+      margin-bottom: 14px;
+      font-size: .9rem;
+    }
+    .notes {
+      padding-left: 18px;
+      color: var(--gris-oscuro);
+      font-size: .86rem;
+    }
+    .notes li {
+      margin: 8px 0;
+    }
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--gris-borde);
+      border-radius: var(--radius);
+      background: var(--blanco);
+      box-shadow: var(--shadow-card);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .76rem;
+      min-width: 860px;
+    }
+    th {
+      background: var(--negro);
+      color: var(--blanco);
+      padding: 12px 13px;
+      text-align: left;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: .66rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    td {
+      padding: 12px 13px;
+      border-top: 1px solid var(--gris-borde);
+      color: var(--gris-oscuro);
+      vertical-align: top;
+      background: rgba(255,255,255,.92);
+    }
+    tbody tr:nth-child(even) td {
+      background: #FBFCFE;
+    }
+    tbody tr:hover td {
+      background: #FFF8E8;
+    }
+    td strong {
+      color: var(--negro);
+      font-weight: 800;
+    }
+    td small {
+      color: var(--gris-medio);
+      display: block;
+      font-size: .68rem;
+      margin-top: 3px;
+      word-break: break-word;
+    }
+    .num {
+      text-align: right;
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      background: var(--negro);
+      color: var(--amarillo);
+      border-radius: 999px;
+      padding: 5px 11px;
+      font-size: .66rem;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .section-lead {
+      color: var(--gris-oscuro);
+      font-size: .92rem;
+      margin-bottom: 16px;
+      max-width: 920px;
+    }
+    .section-lead strong {
+      color: var(--negro);
+      font-weight: 800;
+    }
+    .footer-note {
+      color: var(--gris-medio);
+      font-size: .72rem;
+      margin-top: 12px;
+    }
+    @media (max-width: 1100px) {
+      .summary-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        margin-left: 0;
+        margin-right: 0;
+      }
+      .grid-two {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 700px) {
+      .page {
+        padding: 20px 14px 44px;
+      }
+      .hero {
+        padding: 32px 24px 30px;
+      }
+      .summary-grid {
+        grid-template-columns: 1fr;
+        margin-top: 16px;
+      }
+      .panel {
+        padding: 18px;
+      }
+    }
+
+    @page {
+      size: Letter landscape;
+      margin: 10mm;
+    }
+
+    @media print {
+      html,
+      body {
+        width: auto !important;
+        min-height: initial !important;
+        background: #fff !important;
+        color: var(--negro) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .hub-back,
+      .pdf-download {
+        display: none !important;
+      }
+      .wbs-brand-logo {
+        position: static !important;
+        width: 150px !important;
+        max-width: 150px !important;
+        margin: 0 0 12px !important;
+        padding: 0 !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        background: transparent !important;
+      }
+      .page {
+        max-width: none !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      .hero {
+        background: #fff !important;
+        color: var(--negro) !important;
+        border: 0 !important;
+        border-bottom: 2px solid var(--gris-borde) !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        padding: 0 0 14px !important;
+        break-after: avoid;
+      }
+      .hero::before {
+        display: none !important;
+      }
+      .eyebrow {
+        color: var(--amarillo) !important;
+        font-size: 8pt !important;
+        margin-bottom: 6px !important;
+      }
+      .hero h1 {
+        color: var(--negro) !important;
+        font-size: 28pt !important;
+        line-height: 1 !important;
+        max-width: none !important;
+        margin: 0 0 8px !important;
+      }
+      .hero p {
+        color: var(--gris-oscuro) !important;
+        font-size: 9.5pt !important;
+        max-width: none !important;
+      }
+      .summary-grid {
+        grid-template-columns: repeat(6, 1fr) !important;
+        gap: 7px !important;
+        margin: 10px 0 14px !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      .metric {
+        min-height: initial !important;
+        padding: 9px 10px 10px !important;
+        box-shadow: none !important;
+        border: 1px solid var(--gris-borde) !important;
+        background: #fff !important;
+        break-inside: avoid;
+      }
+      .metric.accent {
+        background: var(--negro) !important;
+        border-color: var(--negro) !important;
+      }
+      .metric span {
+        font-size: 6.7pt !important;
+        margin-bottom: 4px !important;
+      }
+      .metric strong {
+        font-size: 15pt !important;
+        line-height: 1 !important;
+        margin-bottom: 4px !important;
+      }
+      .metric small {
+        font-size: 7pt !important;
+      }
+      .grid-two {
+        grid-template-columns: 1.05fr .95fr !important;
+        gap: 10px !important;
+        margin-bottom: 12px !important;
+        break-inside: avoid;
+      }
+      .panel {
+        padding: 12px !important;
+        box-shadow: none !important;
+        border: 1px solid var(--gris-borde) !important;
+        background: #fff !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      .panel h3 {
+        font-size: 8.5pt !important;
+        margin-bottom: 7px !important;
+      }
+      .callout,
+      .notes,
+      .section-lead,
+      .footer-note {
+        font-size: 8pt !important;
+      }
+      .callout {
+        padding: 8px 10px !important;
+        margin-bottom: 8px !important;
+      }
+      .notes li {
+        margin: 4px 0 !important;
+      }
+      .section-title {
+        margin: 14px 0 8px !important;
+        break-after: avoid;
+      }
+      .section-title h2 {
+        font-size: 18pt !important;
+      }
+      .section-title .mark {
+        height: 22px !important;
+      }
+      .badge {
+        font-size: 6.8pt !important;
+        padding: 3px 8px !important;
+        margin-bottom: 7px !important;
+      }
+      .section-lead {
+        margin-bottom: 8px !important;
+      }
+      .table-wrap {
+        overflow: visible !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+      }
+      table {
+        min-width: 0 !important;
+        width: 100% !important;
+        table-layout: fixed !important;
+        font-size: 7.1pt !important;
+      }
+      th,
+      td {
+        padding: 5px 6px !important;
+        white-space: normal !important;
+        word-break: normal !important;
+        overflow-wrap: anywhere !important;
+      }
+      th {
+        font-size: 6.1pt !important;
+      }
+      td small {
+        font-size: 6.2pt !important;
+        line-height: 1.25 !important;
+      }
+      .num {
+        white-space: nowrap !important;
+        overflow-wrap: normal !important;
+      }
+      tr {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      section.panel {
+        margin-bottom: 10px !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <img class="wbs-brand-logo" src="../assets/img/logo-wbs-azul.png" alt="Westfield Business School">
+  <a class="hub-back" href="../index.html">Volver al hub</a>
+  <button class="pdf-download" type="button" onclick="window.print()">Descargar PDF</button>
+
+  <main class="page">
+    <section class="hero">
+      <div class="eyebrow">Westfield - Meta + LinkedIn</div>
+      <h1>Informe B2B Eventos y General</h1>
+      <p>Periodo: 1 de abril a 22 de junio de 2026. Lectura breve de las campanas B2B de Evento IA, Evento Mexico y General B2B, separando eventos de captacion general.</p>
+    </section>
+
+    <section class="summary-grid" aria-label="Resumen de resultados">
+      <article class="metric accent">
+        <span>Inversion total</span>
+        <strong>USD 846.00</strong>
+        <small>Meta + LinkedIn</small>
+      </article>
+      <article class="metric">
+        <span>Leads totales</span>
+        <strong>225</strong>
+        <small>Eventos + General B2B</small>
+      </article>
+      <article class="metric">
+        <span>CPL promedio</span>
+        <strong>USD 3.76</strong>
+        <small>Costo por lead total</small>
+      </article>
+      <article class="metric">
+        <span>Leads eventos</span>
+        <strong>206</strong>
+        <small>91.6% del total</small>
+      </article>
+      <article class="metric">
+        <span>Leads general</span>
+        <strong>19</strong>
+        <small>8.4% del total</small>
+      </article>
+      <article class="metric">
+        <span>Mejor campana</span>
+        <strong>118 leads</strong>
+        <small>Evento Mexico 7 Mayo</small>
+      </article>
+    </section>
+
+    <section class="grid-two">
+      <article class="panel">
+        <h3>Lectura ejecutiva</h3>
+        <div class="callout">
+          Los eventos concentran 206 leads con USD 504.42 de inversion. El bloque General B2B suma 19 leads con USD 341.58 y corresponde solo a la campana B2B real de LinkedIn; STEM queda fuera de este corte.
+        </div>
+        <ul class="notes">
+          <li>LinkedIn aporta 139 leads con USD 4.78 de CPL promedio.</li>
+        <li>Meta aporta 86 leads con USD 2.11 de CPL promedio, todos asociados a eventos.</li>
+          <li>Evento Mexico en LinkedIn es el mejor aporte individual: 118 leads con USD 2.44 de CPL.</li>
+        </ul>
+      </article>
+      <article class="panel">
+        <h3>Comparativo por plataforma</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Plataforma</th><th class="num">Inversion</th><th class="num">Audiencia</th><th class="num">Interaccion</th><th class="num">Leads</th><th class="num">CPL</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Meta</strong></td><td class="num">USD 181.84</td><td class="num">14,039</td><td class="num">815</td><td class="num">86</td><td class="num">USD 2.11</td></tr>
+              <tr><td><strong>LinkedIn</strong></td><td class="num">USD 664.16</td><td class="num">14,572</td><td class="num">7,461</td><td class="num">139</td><td class="num">USD 4.78</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+
+    <div class="section-title">
+      <span class="mark"></span>
+      <h2>Eventos</h2>
+      <span class="line"></span>
+    </div>
+    <section class="panel">
+      <span class="badge">Evento IA + Evento Mexico</span>
+      <p class="section-lead"><strong>206 leads</strong> con USD 504.42 de inversion y <strong>USD 2.45 de CPL combinado</strong>.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Plataforma</th><th>Campana</th><th>Estado</th><th>Fechas</th><th class="num">Inversion</th><th class="num">Audiencia</th><th class="num">Interaccion</th><th class="num">Leads</th><th class="num">CPL</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Meta</td><td><strong>Evento IA</strong><small>EventoIA_ADE_Meta_Conversiones+Leads_Westfield</small></td><td>PAUSED</td><td>2026-05-15 a abierta</td><td class="num">USD 77.49</td><td class="num">4,879 reach</td><td class="num">200 clics</td><td class="num">82</td><td class="num">USD 0.94</td></tr>
+            <tr><td>Meta</td><td><strong>Evento IA / Lunch & Learn</strong><small>LunchLearn7Julio_ADE_Meta_Conversiones+Leads_Westfield</small></td><td>PAUSED</td><td>2026-06-19 a 2026-07-07</td><td class="num">USD 12.21</td><td class="num">265 reach</td><td class="num">15 clics</td><td class="num">4</td><td class="num">USD 3.05</td></tr>
+            <tr><td>Meta</td><td><strong>Evento Mexico</strong><small>EventoMexico_ADE_Meta_Conversiones_Westfield</small></td><td>PAUSED</td><td>2026-04-09 a 2026-05-09</td><td class="num">USD 92.14</td><td class="num">8,895 reach</td><td class="num">600 clics</td><td class="num">0</td><td class="num">USD 0.00</td></tr>
+            <tr><td>LinkedIn</td><td><strong>Evento IA / Lunch & Learn</strong><small>Lunch & Learn 7 Julio</small></td><td>PAUSED</td><td>2026-06-19 a 2026-07-08</td><td class="num">USD 34.95</td><td class="num">563 sends</td><td class="num">242 opens</td><td class="num">2</td><td class="num">USD 17.48</td></tr>
+            <tr><td>LinkedIn</td><td><strong>Evento Mexico</strong><small>Evento Mexico 7 Mayo</small></td><td>COMPLETED</td><td>2026-04-09 a 2026-05-06</td><td class="num">USD 287.63</td><td class="num">8,477 sends</td><td class="num">4,463 opens</td><td class="num">118</td><td class="num">USD 2.44</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="section-title">
+      <span class="mark"></span>
+      <h2>General B2B</h2>
+      <span class="line"></span>
+    </div>
+    <section class="panel">
+      <span class="badge">Captacion always-on</span>
+      <p class="section-lead"><strong>19 leads</strong> con USD 341.58 de inversion y <strong>USD 17.98 de CPL combinado</strong>. No incluye campanas STEM.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Plataforma</th><th>Campana</th><th>Estado</th><th>Fechas</th><th class="num">Inversion</th><th class="num">Audiencia</th><th class="num">Interaccion</th><th class="num">Leads</th><th class="num">CPL</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>LinkedIn</td><td><strong>General B2B</strong><small>Campana general B2B</small></td><td>PAUSED</td><td>2026-04-16 a abierta</td><td class="num">USD 341.58</td><td class="num">5,532 sends</td><td class="num">2,754 opens</td><td class="num">19</td><td class="num">USD 17.98</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="section-title">
+      <span class="mark"></span>
+      <h2>Recomendaciones</h2>
+      <span class="line"></span>
+    </div>
+    <section class="panel">
+      <ul class="notes">
+        <li>Para eventos, priorizar LinkedIn como fuente de volumen B2B: Mexico logro 118 leads desde Sponsored InMail, muy por encima del resultado de Meta para el mismo evento.</li>
+        <li>Evento IA en Meta tuvo buen volumen relativo con 82 leads y CPL de USD 0.94; Lunch & Learn esta recien encendido en el corte y conviene revisarlo con mas dias de entrega.</li>
+        <li>General B2B se reporta solo con la campana B2B real de LinkedIn; las campanas STEM no hacen parte de este informe.</li>
+        <li>Meta Evento Mexico tuvo clics y 0 leads en el periodo: revisar formulario, evento de conversion o experiencia posterior al clic antes de reactivar.</li>
+      </ul>
+      <p class="footer-note">Fuente tecnica: Meta Ads y LinkedIn Ads. Corte generado el 22 de junio de 2026.</p>
+    </section>
+  </main>
+</body>
+</html>
