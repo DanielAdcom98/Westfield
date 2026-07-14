@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Global Ambassadors | Westfield</title>
+  <link rel="stylesheet" href="../assets/css/shared.css">
+  <style>
+    body{font-family:var(--font-body);color:var(--negro);background-color:var(--blanco);background-image:var(--westfield-pattern);background-size:92px 104px;font-size:14px;line-height:1.5}
+    header{background:var(--negro);color:var(--blanco);padding:28px 40px 30px;position:relative;overflow:hidden}
+    header::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--amarillo)}
+    header h1{font-family:var(--font-title);font-size:clamp(2.2rem,4.4vw,4.8rem);line-height:.95;margin:0;color:var(--amarillo)}
+    header p{max-width:980px;margin:10px 0 0;color:rgba(255,255,255,.78);font-weight:300}
+    main{max-width:1380px;margin:0 auto;padding:32px 28px 52px}
+    section{margin-bottom:34px}
+    h2{font-size:12px;text-transform:uppercase;letter-spacing:.12em;margin:0 0 16px;display:flex;align-items:center;gap:10px}
+    h2::before{content:"";width:4px;height:18px;background:var(--amarillo);border-radius:2px}
+    .period-badge{display:inline-block;margin-top:16px;background:rgba(255,192,0,.14);border:1px solid rgba(255,192,0,.4);border-radius:999px;padding:6px 15px;color:var(--amarillo);font-size:11px;font-weight:700}
+    .grid{display:grid;gap:14px}
+    .metrics{grid-template-columns:repeat(6,minmax(130px,1fr))}
+    .two{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .three{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .metric,.panel,.ad-card,.table-wrap{background:rgba(255,255,255,.94);border:1px solid var(--gris-borde);border-radius:var(--radius);box-shadow:var(--shadow-card)}
+    .metric{padding:18px 16px;min-height:108px;position:relative;overflow:hidden}
+    .metric::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--amarillo)}
+    .metric:first-child{background:var(--negro);border-color:var(--negro)}
+    .metric:first-child .metric-value{color:var(--amarillo)}
+    .metric:first-child .metric-label,.metric:first-child .metric-note{color:rgba(255,255,255,.76)!important}
+    .metric-label{font-size:9.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--gris-medio);font-weight:700}
+    .metric-value{font-size:25px;font-weight:800;margin:7px 0 3px;color:var(--negro)}
+    .metric-note{font-size:10.5px;color:var(--gris-medio);font-weight:300}
+    .panel{padding:22px}
+    .callout{border-left:4px solid var(--amarillo);background:#FFF8DF;border-radius:8px;padding:15px 17px;color:var(--gris-oscuro);line-height:1.7}
+    .notes{margin:12px 0 0;padding-left:18px;color:var(--gris-oscuro);font-weight:300;line-height:1.75}
+    .notes li{margin:6px 0}
+    .table-wrap{overflow-x:auto}
+    table{width:100%;border-collapse:collapse}
+    th{background:var(--negro);color:var(--blanco);font-size:9.5px;text-transform:uppercase;letter-spacing:.08em;padding:10px 12px;text-align:left;white-space:nowrap}
+    td{border-top:1px solid var(--gris-borde);padding:10px 12px;color:var(--gris-oscuro);font-size:11.5px;vertical-align:top}
+    tr:hover td{background:#FFF8DF}
+    .split-bars{display:grid;gap:10px;margin-top:14px}
+    .bar-row{display:grid;grid-template-columns:90px 1fr 62px;gap:10px;align-items:center;font-size:11px;color:var(--gris-oscuro)}
+    .bar-track{height:9px;background:var(--gris-claro);border:1px solid var(--gris-borde);border-radius:999px;overflow:hidden}
+    .bar-fill{height:100%;background:var(--amarillo)}
+    .ads-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+    .ad-card{overflow:hidden}
+    .ad-thumb{height:160px;background:var(--gris-claro);display:flex;align-items:center;justify-content:center;color:var(--gris-medio);font-size:11px}
+    .ad-thumb img{width:100%;height:100%;object-fit:cover}
+    .ad-body{padding:14px}
+    .ad-name{font-size:12px;font-weight:800;line-height:1.35;margin-bottom:5px;color:var(--negro)}
+    .ad-camp{font-size:10px;color:var(--gris-medio);line-height:1.4;margin-bottom:10px}
+    .mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+    .mini-grid span{background:var(--gris-claro);border:1px solid var(--gris-borde);border-radius:8px;padding:7px 8px;font-size:10px;color:var(--gris-oscuro)}
+    .mini-grid strong{display:block;color:var(--negro);font-size:12px}
+    .empty{color:var(--gris-medio);font-size:12px}
+    @media(max-width:980px){header,main{padding-left:16px;padding-right:16px}.metrics,.two,.three{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <img class="wbs-brand-logo" src="../assets/img/logo-wbs-azul.png" alt="Westfield Business School">
+  <button class="pdf-download" type="button" onclick="window.print()">Descargar PDF</button>
+  <a class="hub-back" href="../index.html">← Hub</a>
+  <header>
+    <h1>Global Ambassadors</h1>
+    <p>Informe consolidado de pauta para Meta y LinkedIn, con lectura por país, mejores anuncios, aperturas, mensajes y recomendaciones estratégicas.</p>
+    <div class="period-badge">1 de junio a 30 de junio de 2026 · generado 2026-07-14 11:45</div>
+  </header>
+  <main>
+    <section>
+      <h2>Resumen general</h2>
+      <div class="grid metrics">
+        
+      <div class="metric">
+        <div class="metric-label">Inversión total</div>
+        <div class="metric-value">USD 1,299.85</div>
+        <div class="metric-note">Meta + LinkedIn</div>
+      </div>
+        
+      <div class="metric">
+        <div class="metric-label">Leads totales</div>
+        <div class="metric-value">116</div>
+        <div class="metric-note">Formularios Meta + LinkedIn</div>
+      </div>
+        
+      <div class="metric">
+        <div class="metric-label">CPL consolidado</div>
+        <div class="metric-value">USD 11.21</div>
+        <div class="metric-note">Costo promedio por lead</div>
+      </div>
+        
+      <div class="metric">
+        <div class="metric-label">Audiencia impactada</div>
+        <div class="metric-value">45,415</div>
+        <div class="metric-note">Reach Meta + mensajes LinkedIn</div>
+      </div>
+        
+      <div class="metric">
+        <div class="metric-label">Interacciones clave</div>
+        <div class="metric-value">8,092</div>
+        <div class="metric-note">Clics link Meta + aperturas LinkedIn</div>
+      </div>
+        
+      <div class="metric">
+        <div class="metric-label">Peso LinkedIn</div>
+        <div class="metric-value">12.1%</div>
+        <div class="metric-note">14 leads del total</div>
+      </div>
+      </div>
+    </section>
+
+    <section class="grid two">
+      <div class="panel">
+        <h2>Lectura ejecutiva</h2>
+        <div class="callout">La campana combino cobertura de Meta (31,520 personas alcanzadas) con contacto directo en LinkedIn (13,895 mensajes enviados y 7,612 aperturas). El resultado consolidado fue 116 leads con una inversion de USD 1,299.85.</div>
+        <div class="split-bars">
+          <div class="bar-row"><span>Meta</span><div class="bar-track"><div class="bar-fill" style="width:87.9%"></div></div><strong>87.9%</strong></div>
+          <div class="bar-row"><span>LinkedIn</span><div class="bar-track"><div class="bar-fill" style="width:12.1%"></div></div><strong>12.1%</strong></div>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>Comparativo por medio</h2>
+        <div class="table-wrap"><table><thead><tr><th>Medio</th><th>Inversión</th><th>Alcance / mensajes</th><th>Interacción</th><th>Leads</th><th>CPL</th></tr></thead><tbody><tr><td>Meta</td><td>USD 215.40</td><td>31,520</td><td>480</td><td>102</td><td>USD 2.11</td></tr>
+<tr><td>LinkedIn</td><td>USD 1,084.45</td><td>13,895</td><td>7,612</td><td>14</td><td>USD 77.46</td></tr></tbody></table></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Analisis estrategico</h2>
+      <div class="grid three">
+        <div class="panel"><h3>Rol de Meta</h3><p class="callout">Meta funciono como motor de escala y validacion creativa por pais. Colombia lidero el volumen con 86 leads, mientras el anuncio GlobalAmbassadors_05_Testimonio 1 fue el principal referente por conversion. La siguiente optimizacion deberia reasignar presupuesto hacia paises y piezas con CPL bajo, manteniendo variaciones de testimonio, oportunidad y urgencia para evitar fatiga.</p></div>
+        <div class="panel"><h3>Rol de LinkedIn</h3><p class="callout">LinkedIn aporto precision ejecutiva mediante Sponsored Messaging. La mejor campana fue Becas Global Ambassadors - Colombia Summer26 y la pieza mas fuerte fue Inscríbete y accede a una beca para estudiar tu MBA. La lectura clave esta en la relacion entre aperturas y formularios: cuando el asunto abre bien pero el formulario no acompana, hay que ajustar CTA, promesa y friccion del formulario.</p></div>
+        <div class="panel"><h3>Siguiente ciclo</h3><ul class="notes"><li>Separar presupuesto de escala y presupuesto de eficiencia para no optimizar solo por volumen.</li><li>Usar Meta para aprendizaje creativo por país y LinkedIn para perfiles ejecutivos con intención profesional.</li><li>Medir calidad comercial posterior por origen, país y ángulo para decidir la mezcla final.</li></ul></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Meta · Ad Sets por país</h2>
+      <div class="table-wrap"><table><thead><tr><th>País</th><th>Ad Set</th><th>Inversión</th><th>Alcance</th><th>Impresiones</th><th>Clics link</th><th>CTR link</th><th>Leads</th><th>CPL</th></tr></thead><tbody><tr><td>Colombia</td><td>GlobalAmbassadors_ADE_Meta_Leads_Colombia_Westfield</td><td>USD 153.47</td><td>25,808</td><td>36,300</td><td>410</td><td>1.13%</td><td>86</td><td>USD 1.78</td></tr>
+<tr><td>Peru</td><td>GlobalAmbassadors_ADE_Meta_Leads_Peru_Westfield</td><td>USD 60.15</td><td>5,516</td><td>7,220</td><td>67</td><td>92.80%</td><td>16</td><td>USD 3.76</td></tr>
+<tr><td>USA</td><td>GlobalAmbassadors_ADE_Meta_Leads_USA_Westfield</td><td>USD 0.03</td><td>5</td><td>5</td><td>0</td><td>0.00%</td><td>0</td><td>-</td></tr>
+<tr><td>Mexico</td><td>GlobalAmbassadors_ADE_Meta_Leads_Mexico_Westfield</td><td>USD 1.75</td><td>191</td><td>226</td><td>3</td><td>1.33%</td><td>0</td><td>-</td></tr></tbody></table></div>
+    </section>
+
+    <section>
+      <h2>Meta · Anuncios con mejor rendimiento</h2>
+      <div class="ads-grid">
+      <article class="ad-card">
+        <div class="ad-thumb"><img src="../assets/img/meta-previews/217_GlobalAmbassadors_05_Testimonio_1_2275239546343279.jpg" alt="GlobalAmbassadors_05_Testimonio 1" loading="lazy"></div>
+        <div class="ad-body">
+          <p class="ad-name">GlobalAmbassadors_05_Testimonio 1</p>
+          <p class="ad-camp">Colombia · GlobalAmbassadors_ADE_Meta_Leads_Colombia_Westfield</p>
+          <div class="mini-grid">
+            <span><strong>56</strong> leads</span>
+            <span><strong>USD 1.55</strong> CPL</span>
+            <span><strong>79.75%</strong> CTR link</span>
+            <span><strong>USD 86.82</strong> gasto</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="ad-card">
+        <div class="ad-thumb"><img src="../assets/img/meta-previews/213_GlobalAmbassadors_01_Post_general_1_2097846520805170.jpg" alt="GlobalAmbassadors_01_Post general 1" loading="lazy"></div>
+        <div class="ad-body">
+          <p class="ad-name">GlobalAmbassadors_01_Post general 1</p>
+          <p class="ad-camp">Colombia · GlobalAmbassadors_ADE_Meta_Leads_Colombia_Westfield</p>
+          <div class="mini-grid">
+            <span><strong>12</strong> leads</span>
+            <span><strong>USD 1.29</strong> CPL</span>
+            <span><strong>2.54%</strong> CTR link</span>
+            <span><strong>USD 15.52</strong> gasto</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="ad-card">
+        <div class="ad-thumb"><img src="../assets/img/meta-previews/230_GlobalAmbassadors_04_Post_general_4_1692604695364571.jpg" alt="GlobalAmbassadors_04_Post general 4" loading="lazy"></div>
+        <div class="ad-body">
+          <p class="ad-name">GlobalAmbassadors_04_Post general 4</p>
+          <p class="ad-camp">Colombia · GlobalAmbassadors_ADE_Meta_Leads_Colombia_Westfield</p>
+          <div class="mini-grid">
+            <span><strong>6</strong> leads</span>
+            <span><strong>USD 2.36</strong> CPL</span>
+            <span><strong>4.81%</strong> CTR link</span>
+            <span><strong>USD 14.16</strong> gasto</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="ad-card">
+        <div class="ad-thumb"><img src="../assets/img/meta-previews/231_GlobalAmbassadors_05_Post_general_5_2216452959196081.jpg" alt="GlobalAmbassadors_05_Post general 5" loading="lazy"></div>
+        <div class="ad-body">
+          <p class="ad-name">GlobalAmbassadors_05_Post general 5</p>
+          <p class="ad-camp">Colombia · GlobalAmbassadors_ADE_Meta_Leads_Colombia_Westfield</p>
+          <div class="mini-grid">
+            <span><strong>4</strong> leads</span>
+            <span><strong>USD 1.03</strong> CPL</span>
+            <span><strong>2.59%</strong> CTR link</span>
+            <span><strong>USD 4.11</strong> gasto</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="ad-card">
+        <div class="ad-thumb"><img src="../assets/img/meta-previews/236_GlobalAmbassadors_10_Testimonio_3_994256633345087.jpg" alt="GlobalAmbassadors_10_Testimonio 3" loading="lazy"></div>
+        <div class="ad-body">
+          <p class="ad-name">GlobalAmbassadors_10_Testimonio 3</p>
+          <p class="ad-camp">Colombia · GlobalAmbassadors_ADE_Meta_Leads_Colombia_Westfield</p>
+          <div class="mini-grid">
+            <span><strong>4</strong> leads</span>
+            <span><strong>USD 1.55</strong> CPL</span>
+            <span><strong>1.50%</strong> CTR link</span>
+            <span><strong>USD 6.20</strong> gasto</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="ad-card">
+        <div class="ad-thumb"><img src="../assets/img/meta-previews/205_GlobalAmbassadors_05_Testimonio_1_4466745940236379.jpg" alt="GlobalAmbassadors_05_Testimonio 1" loading="lazy"></div>
+        <div class="ad-body">
+          <p class="ad-name">GlobalAmbassadors_05_Testimonio 1</p>
+          <p class="ad-camp">Peru · GlobalAmbassadors_ADE_Meta_Leads_Peru_Westfield</p>
+          <div class="mini-grid">
+            <span><strong>4</strong> leads</span>
+            <span><strong>USD 5.51</strong> CPL</span>
+            <span><strong>75.25%</strong> CTR link</span>
+            <span><strong>USD 22.04</strong> gasto</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="ad-card">
+        <div class="ad-thumb"><img src="../assets/img/meta-previews/233_GlobalAmbassadors_05_Post_general_5_916295048148007.jpg" alt="GlobalAmbassadors_05_Post general 5" loading="lazy"></div>
+        <div class="ad-body">
+          <p class="ad-name">GlobalAmbassadors_05_Post general 5</p>
+          <p class="ad-camp">Peru · GlobalAmbassadors_ADE_Meta_Leads_Peru_Westfield</p>
+          <div class="mini-grid">
+            <span><strong>2</strong> leads</span>
+            <span><strong>USD 0.55</strong> CPL</span>
+            <span><strong>76.92%</strong> CTR link</span>
+            <span><strong>USD 1.10</strong> gasto</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="ad-card">
+        <div class="ad-thumb"><img src="../assets/img/meta-previews/203_GlobalAmbassadors_03_Post_general_3_3652227874920123.jpg" alt="GlobalAmbassadors_03_Post general 3" loading="lazy"></div>
+        <div class="ad-body">
+          <p class="ad-name">GlobalAmbassadors_03_Post general 3</p>
+          <p class="ad-camp">Peru · GlobalAmbassadors_ADE_Meta_Leads_Peru_Westfield</p>
+          <div class="mini-grid">
+            <span><strong>2</strong> leads</span>
+            <span><strong>USD 0.59</strong> CPL</span>
+            <span><strong>97.09%</strong> CTR link</span>
+            <span><strong>USD 1.18</strong> gasto</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="ad-card">
+        <div class="ad-thumb"><img src="../assets/img/meta-previews/221_GlobalAmbassadors_07_Video_1_Costo_oportunidad_postergar_el_MBA_1510749200794084.jpg" alt="GlobalAmbassadors_07_Video 1 - Costo oportunidad postergar el MBA" loading="lazy"></div>
+        <div class="ad-body">
+          <p class="ad-name">GlobalAmbassadors_07_Video 1 - Costo oportunidad postergar el MBA</p>
+          <p class="ad-camp">Peru · GlobalAmbassadors_ADE_Meta_Leads_Peru_Westfield</p>
+          <div class="mini-grid">
+            <span><strong>2</strong> leads</span>
+            <span><strong>USD 0.80</strong> CPL</span>
+            <span><strong>4.04%</strong> CTR link</span>
+            <span><strong>USD 1.60</strong> gasto</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="ad-card">
+        <div class="ad-thumb"><img src="../assets/img/meta-previews/214_GlobalAmbassadors_02_Post_general_2_1324646986400417.jpg" alt="GlobalAmbassadors_02_Post general 2" loading="lazy"></div>
+        <div class="ad-body">
+          <p class="ad-name">GlobalAmbassadors_02_Post general 2</p>
+          <p class="ad-camp">Colombia · GlobalAmbassadors_ADE_Meta_Leads_Colombia_Westfield</p>
+          <div class="mini-grid">
+            <span><strong>2</strong> leads</span>
+            <span><strong>USD 0.91</strong> CPL</span>
+            <span><strong>1.30%</strong> CTR link</span>
+            <span><strong>USD 1.81</strong> gasto</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="ad-card">
+        <div class="ad-thumb"><img src="../assets/img/meta-previews/218_GlobalAmbassadors_06_Testimonio_2_1416133950538437.jpg" alt="GlobalAmbassadors_06_Testimonio 2" loading="lazy"></div>
+        <div class="ad-body">
+          <p class="ad-name">GlobalAmbassadors_06_Testimonio 2</p>
+          <p class="ad-camp">Colombia · GlobalAmbassadors_ADE_Meta_Leads_Colombia_Westfield</p>
+          <div class="mini-grid">
+            <span><strong>2</strong> leads</span>
+            <span><strong>USD 1.23</strong> CPL</span>
+            <span><strong>1.73%</strong> CTR link</span>
+            <span><strong>USD 2.45</strong> gasto</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="ad-card">
+        <div class="ad-thumb"><img src="../assets/img/meta-previews/206_GlobalAmbassadors_06_Testimonio_2_1983292199017087.jpg" alt="GlobalAmbassadors_06_Testimonio 2" loading="lazy"></div>
+        <div class="ad-body">
+          <p class="ad-name">GlobalAmbassadors_06_Testimonio 2</p>
+          <p class="ad-camp">Peru · GlobalAmbassadors_ADE_Meta_Leads_Peru_Westfield</p>
+          <div class="mini-grid">
+            <span><strong>2</strong> leads</span>
+            <span><strong>USD 1.61</strong> CPL</span>
+            <span><strong>1.57%</strong> CTR link</span>
+            <span><strong>USD 3.23</strong> gasto</span>
+          </div>
+        </div>
+      </article></div>
+    </section>
+
+    <section>
+      <h2>LinkedIn · Aperturas y mensajes por campaña</h2>
+      <div class="table-wrap"><table><thead><tr><th>País</th><th>Campaña</th><th>Fechas</th><th>Inversión</th><th>Mensajes</th><th>Aperturas</th><th>Open rate</th><th>Aperturas form</th><th>Leads</th><th>CPL</th></tr></thead><tbody><tr><td>Colombia</td><td>Becas Global Ambassadors - Colombia Summer26</td><td>2026-06-01 a 2026-06-30</td><td>USD 300.00</td><td>5,172</td><td>2,743</td><td>53.0%</td><td>26</td><td>11</td><td>USD 27.27</td></tr>
+<tr><td>Peru</td><td>Becas Global Ambassadors - Perú Summer26</td><td>2026-06-01 a 2026-06-30</td><td>USD 300.00</td><td>3,275</td><td>1,805</td><td>55.1%</td><td>20</td><td>2</td><td>USD 150.00</td></tr>
+<tr><td>Mexico</td><td>Becas Global Ambassadors - MX Summer26</td><td>2026-06-01 a 2026-06-30</td><td>USD 300.00</td><td>4,304</td><td>2,444</td><td>56.8%</td><td>18</td><td>1</td><td>USD 300.00</td></tr>
+<tr><td>USA</td><td>Becas Global Ambassadors - USA Summer26</td><td>2026-06-01 a 2026-06-30</td><td>USD 184.45</td><td>1,144</td><td>620</td><td>54.2%</td><td>6</td><td>0</td><td>-</td></tr></tbody></table></div>
+    </section>
+
+    <section>
+      <h2>LinkedIn · Creatividades / mensajes</h2>
+      <div class="table-wrap"><table><thead><tr><th>País</th><th>Ángulo</th><th>Asunto</th><th>Inversión</th><th>Mensajes</th><th>Aperturas</th><th>Open rate</th><th>Aperturas form</th><th>Leads</th></tr></thead><tbody><tr><td>Colombia</td><td>6. Oportunidad de acceso y momento</td><td>Inscríbete y accede a una beca para estudiar tu MBA</td><td>USD 130.17</td><td>2,282</td><td>1,274</td><td>55.8%</td><td>15</td><td>5</td></tr>
+<tr><td>Colombia</td><td>Sin angulo</td><td>El momento perfecto para tu MBA es cuando decides hacerlo</td><td>USD 22.25</td><td>380</td><td>184</td><td>48.4%</td><td>2</td><td>2</td></tr>
+<tr><td>Peru</td><td>6. Oportunidad de acceso y momento</td><td>Inscríbete y accede a una beca para estudiar tu MBA</td><td>USD 120.92</td><td>1,493</td><td>862</td><td>57.7%</td><td>9</td><td>1</td></tr>
+<tr><td>Colombia</td><td>2. Liderazgo global y proyección internacional</td><td>Impulsa tu liderazgo con una beca MBA</td><td>USD 28.71</td><td>472</td><td>268</td><td>56.8%</td><td>1</td><td>1</td></tr>
+<tr><td>Colombia</td><td>2. Liderazgo global y proyección internacional</td><td>Conecta con líderes de más de 25 países</td><td>USD 20.88</td><td>478</td><td>256</td><td>53.6%</td><td>2</td><td>1</td></tr>
+<tr><td>Mexico</td><td>2. Liderazgo global y proyección internacional</td><td>Impulsa tu liderazgo con una beca MBA</td><td>USD 21.78</td><td>411</td><td>247</td><td>60.1%</td><td>1</td><td>1</td></tr>
+<tr><td>Colombia</td><td>5. Credibilidad, respaldo y prueba social</td><td>El mejor momento para tu MBA es ahora</td><td>USD 20.18</td><td>400</td><td>215</td><td>53.8%</td><td>2</td><td>1</td></tr>
+<tr><td>Colombia</td><td>Sin angulo</td><td>Quedan pocos días para postularte a una beca para tu MBA</td><td>USD 28.37</td><td>377</td><td>169</td><td>44.8%</td><td>3</td><td>1</td></tr>
+<tr><td>Peru</td><td>Sin angulo</td><td>Quedan pocos días para postularte a una beca para tu MBA</td><td>USD 32.96</td><td>240</td><td>128</td><td>53.3%</td><td>1</td><td>1</td></tr>
+<tr><td>Mexico</td><td>6. Oportunidad de acceso y momento</td><td>Inscríbete y accede a una beca para estudiar tu MBA</td><td>USD 110.53</td><td>2,005</td><td>1,154</td><td>57.6%</td><td>9</td><td>0</td></tr>
+<tr><td>Mexico</td><td>5. Credibilidad, respaldo y prueba social</td><td>El mejor momento para tu MBA es ahora</td><td>USD 22.18</td><td>417</td><td>244</td><td>58.5%</td><td>2</td><td>0</td></tr>
+<tr><td>Mexico</td><td>2. Liderazgo global y proyección internacional</td><td>Conecta con líderes de más de 25 países</td><td>USD 28.57</td><td>419</td><td>237</td><td>56.6%</td><td>1</td><td>0</td></tr>
+<tr><td>Colombia</td><td>Sin angulo</td><td>6 de cada 10 cargos C-level los ocupan ejecutivos con MBA</td><td>USD 27.55</td><td>401</td><td>192</td><td>47.9%</td><td>0</td><td>0</td></tr>
+<tr><td>Colombia</td><td>Sin angulo</td><td>El 90% de profesionales con MBA valora el networking global</td><td>USD 21.89</td><td>382</td><td>185</td><td>48.4%</td><td>1</td><td>0</td></tr>
+<tr><td>USA</td><td>2. Liderazgo global y proyección internacional</td><td>El 90% de profesionales con MBA valora el networking global</td><td>USD 44.48</td><td>308</td><td>178</td><td>57.8%</td><td>0</td><td>0</td></tr>
+<tr><td>Peru</td><td>2. Liderazgo global y proyección internacional</td><td>Impulsa tu liderazgo con una beca MBA</td><td>USD 24.25</td><td>305</td><td>171</td><td>56.1%</td><td>1</td><td>0</td></tr></tbody></table></div>
+    </section>
+  </main>
+</body>
+</html>
